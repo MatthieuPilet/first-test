@@ -37,8 +37,8 @@ public class AccountInformationEntity {
 	private Integer accountAge;
 	
 	@Column(name="account_birthday")
-	private Date account_birthday;
+	private Date accountBirthday;
 	
 	@Column(name="account_subscription_date")
-	private Date account_subscription_date;
+	private Date accountSubscriptionDate;
 }

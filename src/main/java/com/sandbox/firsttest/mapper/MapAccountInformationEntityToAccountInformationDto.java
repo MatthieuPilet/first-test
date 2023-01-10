@@ -15,8 +15,8 @@ public class MapAccountInformationEntityToAccountInformationDto {
 		accountInformationDto.setAccountPassword(accountInformationEntity.getAccountPassword());
 		accountInformationDto.setAccountEmail(accountInformationEntity.getAccountEmail());
 		accountInformationDto.setAccountAge(accountInformationEntity.getAccountAge());
-		accountInformationDto.setAccount_birthday(accountInformationEntity.getAccount_birthday());
-		accountInformationDto.setAccount_subscription_date(accountInformationEntity.getAccount_subscription_date());
+		accountInformationDto.setAccountBirthday(accountInformationEntity.getAccountBirthday());
+		accountInformationDto.setAccountSubscriptionDate(accountInformationEntity.getAccountSubscriptionDate());
 		return accountInformationDto;
 	}
 }

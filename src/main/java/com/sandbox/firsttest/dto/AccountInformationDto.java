@@ -18,6 +18,6 @@ public class AccountInformationDto {
 	private String accountPassword;
 	private String accountEmail;
 	private Integer accountAge;
-	private Date account_birthday;
-	private Date account_subscription_date;
+	private Date accountBirthday;
+	private Date accountSubscriptionDate;
 }
