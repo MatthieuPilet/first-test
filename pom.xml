@@ -29,6 +29,11 @@
 	    <groupId>org.springframework.boot</groupId>
 	    <artifactId>spring-boot-starter-data-jpa</artifactId>
 	</dependency>
+	<dependency>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-test</artifactId>
+		<scope>test</scope>
+	</dependency>
 <!--  #########Lombok Dependency########-->
 	<dependency>
 		<groupId>org.projectlombok</groupId>
@@ -62,5 +67,12 @@
 	    <artifactId>tomcat-dbcp</artifactId>
 	    <version>9.0.1</version>
 	 </dependency>
+<!--  #########JUnit Dependency########-->
+	<dependency>
+        <groupId>org.junit.jupiter</groupId>
+        <artifactId>junit-jupiter-engine</artifactId>
+        <scope>test</scope>
+    </dependency>
+
   </dependencies>
 </project>
