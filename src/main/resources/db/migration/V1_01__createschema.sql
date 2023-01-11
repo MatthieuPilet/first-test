@@ -1,10 +1,10 @@
 DROP TABLE IF EXISTS ACCOUNT_INFORMATION;  
-DROP SEQUENCE IF EXISTS account_information_id_seq;
+DROP SEQUENCE IF EXISTS account_information_seq;
 
-CREATE SEQUENCE account_information_id_seq START WITH 1 INCREMENT BY 1;
+CREATE SEQUENCE account_information_seq START WITH 1 INCREMENT BY 1;
 CREATE TABLE ACCOUNT_INFORMATION
 (
-	account_id BIGINT DEFAULT NEXT VALUE FOR account_information_id_seq PRIMARY KEY NOT NULL,
+	account_id BIGINT DEFAULT NEXT VALUE FOR account_information_seq PRIMARY KEY NOT NULL,
 	account_username VARCHAR(100),
 	account_password VARCHAR(100),
 	account_email VARCHAR(255),

@@ -2,6 +2,7 @@ package com.sandbox.firsttest.repository;
 
 import com.sandbox.firsttest.entity.AccountInformationEntity;
 
-public interface ITestRepository {
+public interface IAccountRepository {
 	public AccountInformationEntity getAccountInformation(Integer id);
+	public AccountInformationEntity createAccountInformation(AccountInformationEntity accountInformationEntity);
 }

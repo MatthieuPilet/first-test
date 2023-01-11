@@ -1,7 +1,7 @@
 package com.sandbox.firsttest.dto;
 
 import java.math.BigDecimal;
-import java.sql.Date;
+import java.util.Date;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -12,7 +12,7 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class AccountInformationDto {
+public class AccountInformationResponseDto {
 	private BigDecimal accountId;
 	private String accountUsername;
 	private String accountPassword;
