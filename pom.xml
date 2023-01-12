@@ -113,4 +113,9 @@
 	    <artifactId>mockito-core</artifactId>
 	</dependency>
   </dependencies>
+  
+  <properties>
+	<sonar.organization>matthieupilet</sonar.organization>
+	<sonar.host.url>https://sonarcloud.io</sonar.host.url>
+  </properties>
 </project>
