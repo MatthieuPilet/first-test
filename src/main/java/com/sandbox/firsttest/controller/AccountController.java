@@ -27,6 +27,7 @@ public class AccountController {
 	
 	@GetMapping("/{id}")
 	public ResponseEntity<AccountInformationResponseDto> getAccountInformation(@PathVariable("id") Integer id) {
+		System.out.println("coucou");
 		return new ResponseEntity<>(accountServiceImpl.getAccountInformation(id),null,HttpStatus.OK);
 	}
 	
