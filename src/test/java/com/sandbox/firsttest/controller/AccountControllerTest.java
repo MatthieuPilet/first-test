@@ -37,7 +37,6 @@ import com.sandbox.firsttest.services.impl.AccountServiceImpl;
  *
  */
 @SpringBootTest
-@RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = {
 		AccountControllerTest.MockDependencies.class,
 })

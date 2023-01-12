@@ -30,7 +30,6 @@ import com.sandbox.firsttest.repository.IAccountRepository;
  */
 @SpringBootTest
 @ContextConfiguration(classes = RunApplication.class)
-@RunWith(SpringJUnit4ClassRunner.class)
 @Sql("/scriptTest/AccountRepositoryTestInit.sql")
 @Sql(scripts = "/scriptTest/AccountRepositoryTestUnload.sql", executionPhase = Sql.ExecutionPhase.AFTER_TEST_METHOD)
 class AccountRepositoryTest {

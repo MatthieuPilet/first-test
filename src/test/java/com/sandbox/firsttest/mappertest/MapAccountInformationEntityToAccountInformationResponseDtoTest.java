@@ -30,7 +30,6 @@ import com.sandbox.firsttest.mapper.MapAccountInformationEntityToAccountInformat
  */
 @ContextConfiguration(classes = RunApplication.class)
 @SpringBootTest
-@RunWith(SpringJUnit4ClassRunner.class)
 class MapAccountInformationEntityToAccountInformationResponseDtoTest {
 
 	@Autowired
