@@ -17,7 +17,7 @@ import com.sandbox.firsttest.dto.AccountInformationRequestDto;
 import com.sandbox.firsttest.dto.AccountInformationResponseDto;
 import com.sandbox.firsttest.services.impl.AccountServiceImpl;
 
-@CrossOrigin
+@CrossOrigin("http://localhost:3000")
 @RestController
 @RequestMapping("/account")
 public class AccountController {

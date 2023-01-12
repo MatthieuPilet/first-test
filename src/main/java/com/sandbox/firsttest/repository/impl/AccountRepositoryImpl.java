@@ -36,7 +36,9 @@ public class AccountRepositoryImpl implements IAccountRepository {
 		Root<AccountInformationEntity> root = cr.from(AccountInformationEntity.class);
 		cr.select(root).where(cb.equal(root.get("accountId"), id));
 		Query<AccountInformationEntity> query = session.createQuery(cr);
-		return query.getSingleResult();
+		AccountInformationEntity accountInformationEntity = query.getSingleResult();
+		session.close();
+		return accountInformationEntity;
 	}
 
 	@Override
