@@ -13,6 +13,7 @@ import java.io.ObjectOutputStream;
 import javax.inject.Inject;
 
 import org.junit.jupiter.api.Test;
+import org.junit.runner.RunWith;
 import org.mockito.ArgumentMatchers;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
@@ -22,6 +23,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
@@ -35,6 +37,7 @@ import com.sandbox.firsttest.services.impl.AccountServiceImpl;
  *
  */
 @SpringBootTest
+@RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = {
 		AccountControllerTest.MockDependencies.class,
 })

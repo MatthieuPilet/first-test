@@ -12,9 +12,11 @@ import java.time.ZoneId;
 import java.util.Date;
 
 import org.junit.jupiter.api.Test;
+import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.jdbc.Sql;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.sandbox.firsttest.entity.AccountInformationEntity;
 import com.sandbox.firsttest.repository.IAccountRepository;
@@ -25,6 +27,7 @@ import com.sandbox.firsttest.repository.IAccountRepository;
  *
  */
 @SpringBootTest
+@RunWith(SpringJUnit4ClassRunner.class)
 @Sql("/scriptTest/AccountRepositoryTestInit.sql")
 @Sql(scripts = "/scriptTest/AccountRepositoryTestUnload.sql", executionPhase = Sql.ExecutionPhase.AFTER_TEST_METHOD)
 class AccountRepositoryTest {
