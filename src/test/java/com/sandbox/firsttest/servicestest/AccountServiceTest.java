@@ -12,8 +12,10 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import com.sandbox.firsttest.RunApplication;
 import com.sandbox.firsttest.dto.AccountInformationRequestDto;
 import com.sandbox.firsttest.dto.AccountInformationResponseDto;
 import com.sandbox.firsttest.entity.AccountInformationEntity;
@@ -29,6 +31,7 @@ import com.sandbox.firsttest.services.impl.AccountServiceImpl;
  */
 @SpringBootTest
 @RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(classes = RunApplication.class)
 class AccountServiceTest {
 	@InjectMocks
 	AccountServiceImpl accountService;

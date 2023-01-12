@@ -14,8 +14,10 @@ import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import com.sandbox.firsttest.RunApplication;
 import com.sandbox.firsttest.dto.AccountInformationRequestDto;
 import com.sandbox.firsttest.entity.AccountInformationEntity;
 import com.sandbox.firsttest.mapper.MapAccountInformationRequestDtoToAccountInformationEntity;
@@ -25,8 +27,8 @@ import com.sandbox.firsttest.mapper.MapAccountInformationRequestDtoToAccountInfo
  * @author Matthieu Pilet
  *
  */
+@ContextConfiguration(classes = RunApplication.class)
 @SpringBootTest
-@RunWith(SpringJUnit4ClassRunner.class)
 class MapAccountInformationRequestDtoToAccountInformationEntityTest {
 
 	@Autowired
