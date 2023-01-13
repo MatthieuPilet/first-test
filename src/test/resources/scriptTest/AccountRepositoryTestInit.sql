@@ -1,2 +1,3 @@
 INSERT INTO ACCOUNT_INFORMATION(account_id,account_username,account_password,account_email,account_age,account_birthday,account_subscription_date) VALUES (99999999,'test_username', 'test_password', 'test_mail',1,CURRENT_DATE,CURRENT_DATE);    
 INSERT INTO ACCOUNT_INFORMATION(account_id,account_username,account_password,account_email,account_age,account_birthday,account_subscription_date) VALUES (99999998,'test_username', 'test_password', 'test_mail',1,CURRENT_DATE,CURRENT_DATE);    
+INSERT INTO ACCOUNT_INFORMATION(account_id,account_username,account_password,account_email,account_age,account_birthday,account_subscription_date) VALUES (99999997,'test_username', 'test_password', 'test_mail',1,CURRENT_DATE,CURRENT_DATE);

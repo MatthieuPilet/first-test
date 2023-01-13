@@ -1,6 +1,6 @@
 package com.sandbox.firsttest.entity;
 
-import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.util.Date;
 
 import org.hibernate.annotations.CreationTimestamp;
@@ -28,7 +28,7 @@ public class AccountInformationEntity {
 	@SequenceGenerator(name = "account_generator", sequenceName = "account_information_seq", allocationSize = 1)
 	@Basic(optional = false)
 	@Column(name="account_id",unique=true, nullable= false)
-	private BigDecimal accountId;
+	private BigInteger accountId;
 	
 	@Column(name="account_username", nullable= false)
 	private String accountUsername;

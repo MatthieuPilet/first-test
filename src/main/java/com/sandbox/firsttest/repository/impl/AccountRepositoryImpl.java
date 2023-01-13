@@ -53,4 +53,27 @@ public class AccountRepositoryImpl implements IAccountRepository {
 		session.close();
 	}
 
+	@Override
+	public AccountInformationEntity updateAccountInformation(AccountInformationEntity accountInformationEntity) {
+		Session session = HibernateConf.getSessionFactory().openSession();
+		session.beginTransaction();
+		AccountInformationEntity aIEBeforeUpdate = session.get(AccountInformationEntity.class, accountInformationEntity.getAccountId());
+		accountInformationEntity.setAccountAge(aIEBeforeUpdate.getAccountAge());
+		accountInformationEntity.setAccountBirthday(aIEBeforeUpdate.getAccountBirthday());
+		accountInformationEntity.setAccountSubscriptionDate(aIEBeforeUpdate.getAccountSubscriptionDate());
+		if(null == accountInformationEntity.getAccountEmail()) {
+			accountInformationEntity.setAccountEmail(aIEBeforeUpdate.getAccountEmail());
+		}
+		if(null == accountInformationEntity.getAccountPassword()) {
+			accountInformationEntity.setAccountPassword(aIEBeforeUpdate.getAccountPassword());
+		}
+		if(null == accountInformationEntity.getAccountUsername()) {
+			accountInformationEntity.setAccountUsername(aIEBeforeUpdate.getAccountUsername());
+		}
+		session.merge(accountInformationEntity);
+		session.flush();
+		session.close();
+		return accountInformationEntity;
+	}
+
 }

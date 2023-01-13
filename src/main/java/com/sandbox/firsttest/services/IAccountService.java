@@ -1,11 +1,13 @@
 package com.sandbox.firsttest.services;
 
-import com.sandbox.firsttest.dto.AccountInformationRequestDto;
-import com.sandbox.firsttest.dto.AccountInformationResponseDto;
+import com.sandbox.firsttest.dto.AIRequestDto;
+import com.sandbox.firsttest.dto.AIResponseDto;
+import com.sandbox.firsttest.dto.UpdateAIRequestDto;
 
 public interface IAccountService {
 
-	public AccountInformationResponseDto getAccountInformation(Integer id);
-	public AccountInformationResponseDto createAccountInformation(AccountInformationRequestDto accountInformationRequestDto);
+	public AIResponseDto getAccountInformation(Integer id);
+	public AIResponseDto createAccountInformation(AIRequestDto accountInformationRequestDto);
 	public void deleteAccountInformation(Integer id);
+	public AIResponseDto updateAccountInformation(UpdateAIRequestDto updateAIRequestDto);
 }

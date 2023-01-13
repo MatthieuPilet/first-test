@@ -16,9 +16,9 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ContextConfiguration;
 
 import com.sandbox.firsttest.RunApplication;
-import com.sandbox.firsttest.dto.AccountInformationRequestDto;
+import com.sandbox.firsttest.dto.AIRequestDto;
 import com.sandbox.firsttest.entity.AccountInformationEntity;
-import com.sandbox.firsttest.mapper.MapAccountInformationRequestDtoToAccountInformationEntity;
+import com.sandbox.firsttest.mapper.MapAIRequestDtoToAIEntity;
 
 /**
  * 
@@ -27,21 +27,21 @@ import com.sandbox.firsttest.mapper.MapAccountInformationRequestDtoToAccountInfo
  */
 @ContextConfiguration(classes = RunApplication.class)
 @SpringBootTest
-class MapAccountInformationRequestDtoToAccountInformationEntityTest {
+class MapAIRequestDtoToAIEntityTest {
 
 	@Autowired
-	public MapAccountInformationRequestDtoToAccountInformationEntity mapAccountInformationRequestDtoToAccountInformationEntity;
+	public MapAIRequestDtoToAIEntity mapAIRequestDtoToAIEntity;
 	
 	@Test
 	void mapTest() {
 		Date dateTest = Date.from(LocalDate.of(2023, 01, 12).atStartOfDay(ZoneId.systemDefault()).toInstant());
-		AccountInformationRequestDto accountInformationRequestDto = new AccountInformationRequestDto();
+		AIRequestDto accountInformationRequestDto = new AIRequestDto();
 		accountInformationRequestDto.setAccountAge(0);
 		accountInformationRequestDto.setAccountBirthday(dateTest);
 		accountInformationRequestDto.setAccountEmail("testMail");
 		accountInformationRequestDto.setAccountPassword("testPassword");
 		accountInformationRequestDto.setAccountUsername("testUsername");
-		AccountInformationEntity accountInformationEntity = mapAccountInformationRequestDtoToAccountInformationEntity.map(accountInformationRequestDto);
+		AccountInformationEntity accountInformationEntity = mapAIRequestDtoToAIEntity.map(accountInformationRequestDto);
 		
 		assertNotNull(accountInformationEntity);
 		assertEquals(0, accountInformationEntity.getAccountAge());

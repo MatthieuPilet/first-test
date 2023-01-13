@@ -28,8 +28,8 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
-import com.sandbox.firsttest.dto.AccountInformationRequestDto;
-import com.sandbox.firsttest.dto.AccountInformationResponseDto;
+import com.sandbox.firsttest.dto.AIRequestDto;
+import com.sandbox.firsttest.dto.AIResponseDto;
 import com.sandbox.firsttest.services.impl.AccountServiceImpl;
 
 /**
@@ -57,21 +57,21 @@ class AccountControllerTest {
 	
 	@Test
     void getAccountInformationOKTest() {
-		Mockito.when(accountService.getAccountInformation(ArgumentMatchers.anyInt())).thenReturn(new AccountInformationResponseDto());
-		ResponseEntity<AccountInformationResponseDto> accountInformationResponseDto = accountController.getAccountInformation(99999999);
+		Mockito.when(accountService.getAccountInformation(ArgumentMatchers.anyInt())).thenReturn(new AIResponseDto());
+		ResponseEntity<AIResponseDto> accountInformationResponseDto = accountController.getAccountInformation(ArgumentMatchers.any());
         assertNotNull(accountInformationResponseDto);
     }
 	
 	@Test
     void createAccountInformationOKTest() {
-        Mockito.when(accountService.createAccountInformation(ArgumentMatchers.any())).thenReturn(new AccountInformationResponseDto());
-		ResponseEntity<AccountInformationResponseDto> accountInformationResponseDto = accountController.createAccountInformation(new AccountInformationRequestDto());
+        Mockito.when(accountService.createAccountInformation(ArgumentMatchers.any())).thenReturn(new AIResponseDto());
+		ResponseEntity<AIResponseDto> accountInformationResponseDto = accountController.createAccountInformation(ArgumentMatchers.any());
         assertNotNull(accountInformationResponseDto);
     }
 	
 	@Test
     void createAccountInformationKOTest() throws Exception {
-		AccountInformationRequestDto accountInformationRequestDto = new AccountInformationRequestDto();
+		AIRequestDto accountInformationRequestDto = new AIRequestDto();
 	    ByteArrayOutputStream bos = new ByteArrayOutputStream();
 	    ObjectOutputStream oos = new ObjectOutputStream(bos);
 	    oos.writeObject(accountInformationRequestDto);
@@ -97,6 +97,13 @@ class AccountControllerTest {
 		Mockito.doThrow(new MockitoException("")).when(accountService).deleteAccountInformation(ArgumentMatchers.anyInt());
 		ResponseEntity<String> response = accountController.deleteAccountInformation(9999999);
 		assertEquals(HttpStatus.NOT_FOUND,response.getStatusCode());
+    }
+	
+	@Test
+    void updateAccountInformationOKTest() throws MockitoException{
+		Mockito.when(accountService.updateAccountInformation(ArgumentMatchers.any())).thenReturn(new AIResponseDto());
+		ResponseEntity<AIResponseDto> accountInformationResponseDto = accountController.updateAccountInformation(ArgumentMatchers.any());
+        assertNotNull(accountInformationResponseDto);
     }
 	
 	public static class MockDependencies {

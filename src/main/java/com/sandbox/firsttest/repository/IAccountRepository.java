@@ -6,4 +6,5 @@ public interface IAccountRepository {
 	public AccountInformationEntity getAccountInformation(Integer id);
 	public AccountInformationEntity createAccountInformation(AccountInformationEntity accountInformationEntity);
 	public void deleteAccountInformation(Integer id);
+	public AccountInformationEntity updateAccountInformation(AccountInformationEntity accountInformationEntity);
 }

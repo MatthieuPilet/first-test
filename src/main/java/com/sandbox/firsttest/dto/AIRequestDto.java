@@ -16,7 +16,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-public class AccountInformationRequestDto implements Serializable{
+public class AIRequestDto implements Serializable{
 	/** UID */
 	private static final long serialVersionUID = 1L;
 	

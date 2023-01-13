@@ -14,11 +14,12 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ContextConfiguration;
 
 import com.sandbox.firsttest.RunApplication;
-import com.sandbox.firsttest.dto.AccountInformationRequestDto;
-import com.sandbox.firsttest.dto.AccountInformationResponseDto;
+import com.sandbox.firsttest.dto.AIRequestDto;
+import com.sandbox.firsttest.dto.AIResponseDto;
 import com.sandbox.firsttest.entity.AccountInformationEntity;
-import com.sandbox.firsttest.mapper.MapAccountInformationEntityToAccountInformationResponseDto;
-import com.sandbox.firsttest.mapper.MapAccountInformationRequestDtoToAccountInformationEntity;
+import com.sandbox.firsttest.mapper.MapAIEntityToAIResponseDto;
+import com.sandbox.firsttest.mapper.MapAIRequestDtoToAIEntity;
+import com.sandbox.firsttest.mapper.MapUpdateAIRequestDtoToAIEntity;
 import com.sandbox.firsttest.repository.impl.AccountRepositoryImpl;
 import com.sandbox.firsttest.services.impl.AccountServiceImpl;
 
@@ -37,25 +38,28 @@ class AccountServiceTest {
 	AccountRepositoryImpl accountRepositoryImpl;
 	
 	@Mock
-	MapAccountInformationEntityToAccountInformationResponseDto mapAccountInformationEntityToAccountInformationResponseDto;
+	MapAIEntityToAIResponseDto mapAIEntityToAIResponseDto;
 	
 	@Mock
-	MapAccountInformationRequestDtoToAccountInformationEntity mapAccountInformationRequestDtoToAccountInformationEntity;
+	MapUpdateAIRequestDtoToAIEntity mapUpdateAIRequestDtoToAIEntity;
+	
+	@Mock
+	MapAIRequestDtoToAIEntity mapAIRequestDtoToAIEntity;
 	
 	@Test
     void getAccountInformationOKTest() {
         Mockito.when(accountRepositoryImpl.getAccountInformation(ArgumentMatchers.anyInt())).thenReturn(new AccountInformationEntity());
-        Mockito.when(mapAccountInformationEntityToAccountInformationResponseDto.map(ArgumentMatchers.any())).thenReturn(new AccountInformationResponseDto());
-        AccountInformationResponseDto accountInformationResponseDto = accountService.getAccountInformation(99999999);
+        Mockito.when(mapAIEntityToAIResponseDto.map(ArgumentMatchers.any())).thenReturn(new AIResponseDto());
+        AIResponseDto accountInformationResponseDto = accountService.getAccountInformation(99999999);
         assertNotNull(accountInformationResponseDto);
     }
 	
 	@Test
     void createAccountInformationOKTest() {
         Mockito.when(accountRepositoryImpl.createAccountInformation(ArgumentMatchers.any())).thenReturn(new AccountInformationEntity());
-        Mockito.when(mapAccountInformationEntityToAccountInformationResponseDto.map(ArgumentMatchers.any())).thenReturn(new AccountInformationResponseDto());
-        Mockito.when(mapAccountInformationRequestDtoToAccountInformationEntity.map(ArgumentMatchers.any())).thenReturn(new AccountInformationEntity());
-        AccountInformationResponseDto accountInformationResponseDto = accountService.createAccountInformation(new AccountInformationRequestDto());
+        Mockito.when(mapAIEntityToAIResponseDto.map(ArgumentMatchers.any())).thenReturn(new AIResponseDto());
+        Mockito.when(mapAIRequestDtoToAIEntity.map(ArgumentMatchers.any())).thenReturn(new AccountInformationEntity());
+        AIResponseDto accountInformationResponseDto = accountService.createAccountInformation(new AIRequestDto());
         assertNotNull(accountInformationResponseDto);
     }
 	
@@ -64,5 +68,14 @@ class AccountServiceTest {
 		Mockito.doNothing().when(accountRepositoryImpl).deleteAccountInformation(ArgumentMatchers.any());
         accountService.deleteAccountInformation(ArgumentMatchers.anyInt());
         Mockito.verify(accountRepositoryImpl).deleteAccountInformation(ArgumentMatchers.anyInt());
+    }
+	
+	@Test
+    void updateAccountInformationOKTest() {
+		Mockito.when(mapAIEntityToAIResponseDto.map(ArgumentMatchers.any())).thenReturn(new AIResponseDto());
+		Mockito.when(accountRepositoryImpl.updateAccountInformation(ArgumentMatchers.any())).thenReturn(new AccountInformationEntity());
+		Mockito.when(mapUpdateAIRequestDtoToAIEntity.map(ArgumentMatchers.any())).thenReturn(new AccountInformationEntity());
+		AIResponseDto aIResponseDto = accountService.updateAccountInformation(ArgumentMatchers.any());
+        assertNotNull(aIResponseDto);
     }
 }

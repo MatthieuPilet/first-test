@@ -6,7 +6,7 @@ package com.sandbox.firsttest.mappertest;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.Date;
@@ -17,9 +17,9 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ContextConfiguration;
 
 import com.sandbox.firsttest.RunApplication;
-import com.sandbox.firsttest.dto.AccountInformationResponseDto;
+import com.sandbox.firsttest.dto.AIResponseDto;
 import com.sandbox.firsttest.entity.AccountInformationEntity;
-import com.sandbox.firsttest.mapper.MapAccountInformationEntityToAccountInformationResponseDto;
+import com.sandbox.firsttest.mapper.MapAIEntityToAIResponseDto;
 
 /**
  * 
@@ -28,10 +28,10 @@ import com.sandbox.firsttest.mapper.MapAccountInformationEntityToAccountInformat
  */
 @ContextConfiguration(classes = RunApplication.class)
 @SpringBootTest
-class MapAccountInformationEntityToAccountInformationResponseDtoTest {
+class MapAIEntityToAIResponseDtoTest {
 
 	@Autowired
-	public MapAccountInformationEntityToAccountInformationResponseDto mapAccountInformationEntityToAccountInformationResponseDto;
+	public MapAIEntityToAIResponseDto mapAIEntityToAIResponseDto;
 	
 	@Test
 	void mapTest() {
@@ -40,17 +40,17 @@ class MapAccountInformationEntityToAccountInformationResponseDtoTest {
 		accountInformationEntity.setAccountAge(0);
 		accountInformationEntity.setAccountBirthday(dateTest);
 		accountInformationEntity.setAccountEmail("testMail");
-		accountInformationEntity.setAccountId(BigDecimal.valueOf(1));
+		accountInformationEntity.setAccountId(BigInteger.valueOf(1));
 		accountInformationEntity.setAccountPassword("testPassword");
 		accountInformationEntity.setAccountSubscriptionDate(dateTest);
 		accountInformationEntity.setAccountUsername("testUsername");
-		AccountInformationResponseDto accountInformationResponseDto = mapAccountInformationEntityToAccountInformationResponseDto.map(accountInformationEntity);
+		AIResponseDto accountInformationResponseDto = mapAIEntityToAIResponseDto.map(accountInformationEntity);
 		
 		assertNotNull(accountInformationResponseDto);
 		assertEquals(0, accountInformationResponseDto.getAccountAge());
 		assertEquals(dateTest, accountInformationResponseDto.getAccountBirthday());
 		assertEquals("testMail", accountInformationResponseDto.getAccountEmail());
-		assertEquals(BigDecimal.valueOf(1), accountInformationResponseDto.getAccountId());
+		assertEquals(BigInteger.valueOf(1), accountInformationResponseDto.getAccountId());
 		assertEquals("testPassword", accountInformationResponseDto.getAccountPassword());
 		assertEquals(dateTest, accountInformationResponseDto.getAccountSubscriptionDate());
 		assertEquals("testUsername", accountInformationResponseDto.getAccountUsername());
