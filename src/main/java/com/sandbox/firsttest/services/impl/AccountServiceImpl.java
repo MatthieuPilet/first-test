@@ -36,4 +36,9 @@ public class AccountServiceImpl implements IAccountService{
 		return mapAccountInformationEntityToAccountInformationDto.map(accountInformationEntityResponse);
 	}
 
+	@Override
+	public void deleteAccountInformation(Integer id) {
+		accountRepositoryImpl.deleteAccountInformation(id);
+	}
+
 }

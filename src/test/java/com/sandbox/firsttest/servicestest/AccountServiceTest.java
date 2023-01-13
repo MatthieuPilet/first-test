@@ -6,14 +6,12 @@ package com.sandbox.firsttest.servicestest;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import org.junit.jupiter.api.Test;
-import org.junit.runner.RunWith;
 import org.mockito.ArgumentMatchers;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.sandbox.firsttest.RunApplication;
 import com.sandbox.firsttest.dto.AccountInformationRequestDto;
@@ -59,5 +57,12 @@ class AccountServiceTest {
         Mockito.when(mapAccountInformationRequestDtoToAccountInformationEntity.map(ArgumentMatchers.any())).thenReturn(new AccountInformationEntity());
         AccountInformationResponseDto accountInformationResponseDto = accountService.createAccountInformation(new AccountInformationRequestDto());
         assertNotNull(accountInformationResponseDto);
+    }
+	
+	@Test
+    void deleteAccountInformationOKTest() {
+		Mockito.doNothing().when(accountRepositoryImpl).deleteAccountInformation(ArgumentMatchers.any());
+        accountService.deleteAccountInformation(ArgumentMatchers.anyInt());
+        Mockito.verify(accountRepositoryImpl).deleteAccountInformation(ArgumentMatchers.anyInt());
     }
 }

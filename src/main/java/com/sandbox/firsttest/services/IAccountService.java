@@ -7,4 +7,5 @@ public interface IAccountService {
 
 	public AccountInformationResponseDto getAccountInformation(Integer id);
 	public AccountInformationResponseDto createAccountInformation(AccountInformationRequestDto accountInformationRequestDto);
+	public void deleteAccountInformation(Integer id);
 }

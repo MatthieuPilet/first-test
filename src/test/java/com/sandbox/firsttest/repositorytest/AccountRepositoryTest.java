@@ -3,6 +3,7 @@
  */
 package com.sandbox.firsttest.repositorytest;
 
+import static org.junit.Assert.assertNull;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
@@ -11,13 +12,12 @@ import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.Date;
 
+import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
-import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.jdbc.Sql;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.sandbox.firsttest.RunApplication;
 import com.sandbox.firsttest.entity.AccountInformationEntity;
@@ -38,12 +38,14 @@ class AccountRepositoryTest {
 	public IAccountRepository accountRepository;
 	
 	@Test
+	@Order(1)
 	void getAccountInformationTest() {
 		AccountInformationEntity accountInformationEntity = accountRepository.getAccountInformation(99999999);
 		assertEquals(BigDecimal.valueOf(99999999), accountInformationEntity.getAccountId());
 	}
 	
 	@Test
+	@Order(2)
 	void createAccountInformationTest() {
 
 		AccountInformationEntity accountInformationEntityRequest = new AccountInformationEntity();
@@ -57,6 +59,13 @@ class AccountRepositoryTest {
 		AccountInformationEntity accountInformationEntity = accountRepository.createAccountInformation(accountInformationEntityRequest);
 		
 		assertNotNull(accountInformationEntity.getAccountId());
+	}
+	
+	@Test
+	@Order(3)
+	void deleteAccountInformationTest() {
+		accountRepository.deleteAccountInformation(99999998);
+		assertNull(accountRepository.getAccountInformation(99999998));
 	}
 
 }

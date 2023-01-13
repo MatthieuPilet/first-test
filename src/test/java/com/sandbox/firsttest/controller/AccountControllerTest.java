@@ -3,6 +3,7 @@
  */
 package com.sandbox.firsttest.controller;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -13,17 +14,17 @@ import java.io.ObjectOutputStream;
 import javax.inject.Inject;
 
 import org.junit.jupiter.api.Test;
-import org.junit.runner.RunWith;
 import org.mockito.ArgumentMatchers;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
+import org.mockito.exceptions.base.MockitoException;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.annotation.Bean;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
@@ -82,6 +83,20 @@ class AccountControllerTest {
                 content(data)).
                 andExpect(status().isBadRequest()).
                 andReturn();
+    }
+	
+	@Test
+    void deleteAccountInformationOKTest() {
+		Mockito.doNothing().when(accountService).deleteAccountInformation(ArgumentMatchers.anyInt());
+		accountController.deleteAccountInformation(ArgumentMatchers.anyInt());
+		Mockito.verify(accountService).deleteAccountInformation(ArgumentMatchers.anyInt());
+    }
+	
+	@Test
+    void deleteAccountInformationKOTest() throws MockitoException{
+		Mockito.doThrow(new MockitoException("")).when(accountService).deleteAccountInformation(ArgumentMatchers.anyInt());
+		ResponseEntity<String> response = accountController.deleteAccountInformation(9999999);
+		assertEquals(HttpStatus.NOT_FOUND,response.getStatusCode());
     }
 	
 	public static class MockDependencies {

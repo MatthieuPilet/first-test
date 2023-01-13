@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -33,5 +34,15 @@ public class AccountController {
 	@PutMapping("/createAccount")
 	public ResponseEntity<AccountInformationResponseDto> createAccountInformation(@RequestBody @Valid AccountInformationRequestDto accountInformationDto) {
 		return new ResponseEntity<>(accountServiceImpl.createAccountInformation(accountInformationDto),null,HttpStatus.OK);
+	}
+	
+	@DeleteMapping("/{id}")
+	public ResponseEntity<String> deleteAccountInformation(@PathVariable("id") Integer id) {
+		try {
+			accountServiceImpl.deleteAccountInformation(id);
+			return new ResponseEntity<>("L'objet a été delete",null,HttpStatus.OK);
+		}catch(Exception e) {
+			return new ResponseEntity<>("L'objet n'a pas été delete",null,HttpStatus.NOT_FOUND);
+		}
 	}
 }
