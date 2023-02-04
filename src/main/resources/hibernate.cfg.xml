@@ -10,5 +10,7 @@
         <property name="hibernate.connection.username">sa</property>
         <property name="hibernate.connection.password"></property>
         <mapping class="com.sandbox.firsttest.entity.AccountInformationEntity"/>
+        <mapping class="com.sandbox.firsttest.entity.CharacterEntity"/>
+        <mapping class="com.sandbox.firsttest.entity.BaseWeaponEntity"/>
     </session-factory>
 </hibernate-configuration>

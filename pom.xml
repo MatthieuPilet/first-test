@@ -10,6 +10,17 @@
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>3.0.1</version>
 	</parent>
+	<!--  #########Properties########-->
+	<properties>
+		<!--  #########Properties for sonar cloud########-->
+		<!--  #########https://sonarcloud.io/project/overview?id=MatthieuPilet_first-test########-->
+		<sonar.organization>matthieupilet</sonar.organization>
+		<sonar.host.url>https://sonarcloud.io</sonar.host.url>
+		<!--  #########Propertie for version for swagger########-->
+		<swagger.version>3.0.0</swagger.version>
+		
+		 <maven.compiler.release>17</maven.compiler.release>
+	</properties>
 	<!--  #########Spring Boot Dependencies########-->
 	<dependencies>
 		<dependency>
@@ -51,10 +62,19 @@
 		</dependency>
 		<!--  #########Hibernate Dependency########-->
 		<dependency>
-			<groupId>org.hibernate</groupId>
-			<artifactId>hibernate-core</artifactId>
-			<version>6.1.6.Final</version>
+		    <groupId>org.hibernate.orm</groupId>
+		    <artifactId>hibernate-core</artifactId>
 		</dependency>
+		<dependency>
+		    <groupId>org.hibernate.validator</groupId>
+		    <artifactId>hibernate-validator</artifactId>
+		</dependency>
+		<!-- ########To generate Metamodel#######-->
+		<dependency>
+		    <groupId>org.hibernate.orm</groupId>
+		    <artifactId>hibernate-jpamodelgen</artifactId>
+		</dependency>
+
 		<!--  #########Spring Dependencies########-->
 		<dependency>
 			<groupId>org.springframework</groupId>
@@ -83,12 +103,13 @@
 			<scope>test</scope>
 		</dependency>
 		<!--  #########Javax Dependency########-->
-		<!--  ######### for @Valid annotation and the other. Inject for test-->
+		<!--  ######### for @Valid annotation and the other.-->
 		<dependency>
 			<groupId>javax.validation</groupId>
 			<artifactId>validation-api</artifactId>
 			<version>2.0.1.Final</version>
 		</dependency>
+		<!--  ######### for @Inject for test #######-->
 		<dependency>
 			<groupId>javax.inject</groupId>
 			<artifactId>javax.inject</artifactId>
@@ -103,13 +124,19 @@
 			<groupId>org.mockito</groupId>
 			<artifactId>mockito-core</artifactId>
 		</dependency>
+		<!--  #########Swagger Dependencies########-->
+		<!--  #########Use OpenApi cause of Spring Boot3########-->
+		<dependency>
+	        <groupId>org.springdoc</groupId>
+	        <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+	        <version>2.0.2</version>
+	   </dependency>
 	</dependencies>
-	<properties>
-		<sonar.organization>matthieupilet</sonar.organization>
-		<sonar.host.url>https://sonarcloud.io</sonar.host.url>
-	</properties>
+	
+	
 	<build>
 		<plugins>
+			<!--  #########Plugins to have coverage informations for sonar cloud########-->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-surefire-plugin</artifactId>
@@ -136,6 +163,23 @@
 					</execution>
 				</executions>
 			</plugin>
+            <plugin>
+            <groupId>org.codehaus.mojo</groupId>
+            <artifactId>build-helper-maven-plugin</artifactId>
+            <executions>
+                <execution>
+                    <phase>generate-sources</phase>
+                    <goals>
+                        <goal>add-source</goal>
+                    </goals>
+                    <configuration>
+                        <sources>
+							<source>target/generated-sources/annotations</source>
+                        </sources>
+                    </configuration>
+                </execution>
+            </executions>
+        </plugin>
 		</plugins>
 	</build>
 </project>

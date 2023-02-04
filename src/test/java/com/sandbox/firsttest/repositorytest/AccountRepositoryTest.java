@@ -13,8 +13,10 @@ import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.Date;
 
+import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestMethodOrder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ContextConfiguration;
@@ -31,6 +33,7 @@ import com.sandbox.firsttest.repository.IAccountRepository;
  */
 @SpringBootTest
 @ContextConfiguration(classes = RunApplication.class)
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 @Sql("/scriptTest/AccountRepositoryTestInit.sql")
 @Sql(scripts = "/scriptTest/AccountRepositoryTestUnload.sql", executionPhase = Sql.ExecutionPhase.AFTER_TEST_METHOD)
 class AccountRepositoryTest {

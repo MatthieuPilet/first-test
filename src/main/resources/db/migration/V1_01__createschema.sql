@@ -14,12 +14,12 @@ CREATE TABLE ACCOUNT_INFORMATION
 );
 
 DROP TABLE IF EXISTS BASE_WEAPON;  
-DROP SEQUENCE IF EXISTS base_weapon_id_seq;
+DROP SEQUENCE IF EXISTS base_weapon_seq;
 
-CREATE SEQUENCE base_weapon_id_seq START WITH 1 INCREMENT BY 1;
+CREATE SEQUENCE base_weapon_seq START WITH 1 INCREMENT BY 1;
 CREATE TABLE BASE_WEAPON
 (
-    base_weapon_id BIGINT  DEFAULT NEXT VALUE FOR base_weapon_id_seq PRIMARY KEY NOT NULL,
+    base_weapon_id BIGINT  DEFAULT NEXT VALUE FOR base_weapon_seq PRIMARY KEY NOT NULL,
     base_weapon_name VARCHAR(100),
     base_stat_strength INT,
     base_stat_agility INT,
@@ -31,12 +31,12 @@ CREATE TABLE BASE_WEAPON
 );
 
 DROP TABLE IF EXISTS CHARACTERS;  
-DROP SEQUENCE IF EXISTS characters_id_seq;
+DROP SEQUENCE IF EXISTS characters_seq;
 
-CREATE SEQUENCE characters_id_seq START WITH 1 INCREMENT BY 1;
+CREATE SEQUENCE characters_seq START WITH 1 INCREMENT BY 1;
 CREATE TABLE CHARACTERS
 (
-    character_id BIGINT  DEFAULT NEXT VALUE FOR characters_id_seq PRIMARY KEY NOT NULL,
+    character_id BIGINT  DEFAULT NEXT VALUE FOR characters_seq PRIMARY KEY NOT NULL,
     account_id BIGINT NOT NULL ,
     base_weapon_id BIGINT NOT NULL ,
     character_name VARCHAR(100),
