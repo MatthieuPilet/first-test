@@ -1,6 +1,3 @@
-/**
- * 
- */
 package com.sandbox.firsttest.controller;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
