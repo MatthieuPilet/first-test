@@ -12,5 +12,6 @@
         <mapping class="com.sandbox.firsttest.entity.AccountInformationEntity"/>
         <mapping class="com.sandbox.firsttest.entity.CharacterEntity"/>
         <mapping class="com.sandbox.firsttest.entity.BaseWeaponEntity"/>
+        <mapping class="com.sandbox.firsttest.entity.CharacterStatsEntity"/>
     </session-factory>
 </hibernate-configuration>

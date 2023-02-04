@@ -13,6 +13,7 @@ public class CharacterResponseDto {
 	private BigInteger characterId;
 	private BigInteger accountId;
 	private BigInteger baseWeaponId;
+	private BigInteger characterStatsId;
 	private String characterName;
 	private String characterTitle;
 	private Integer characterStrength;

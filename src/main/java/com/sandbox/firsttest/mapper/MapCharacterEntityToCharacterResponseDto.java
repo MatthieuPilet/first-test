@@ -12,19 +12,11 @@ public class MapCharacterEntityToCharacterResponseDto {
 
 	public CharacterResponseDto map(CharacterEntity characterEntity) {
 		CharacterResponseDto characterResponseDto = new CharacterResponseDto();
-		characterResponseDto.setAccountId(characterEntity.getAccountInformationEntity().getAccountId());
-		characterResponseDto.setBaseWeaponId(characterEntity.getBaseWeaponEntity().getBaseWeapondId());
-		characterResponseDto.setCharacterAgility(characterEntity.getCharacterAgility());
-		characterResponseDto.setCharacterEnergy(characterEntity.getCharacterEnergy());
 		characterResponseDto.setCharacterId(characterEntity.getCharacterId());
-		characterResponseDto.setCharacterIntelligence(characterEntity.getCharacterIntelligence());
-		characterResponseDto.setCharacterLife(characterEntity.getCharacterLife());
+		characterResponseDto.setAccountId(characterEntity.getAccountInformationEntity().getAccountId());
+		characterResponseDto.setBaseWeaponId(characterEntity.getBaseWeaponEntity() != null ? characterEntity.getBaseWeaponEntity().getBaseWeapondId() : null);
+		characterResponseDto.setCharacterStatsId(characterEntity.getCharactersStatsEntity() != null ? characterEntity.getCharactersStatsEntity().getCharacterStatsId() : null);
 		characterResponseDto.setCharacterName(characterEntity.getCharacterName());
-		characterResponseDto.setCharacterStealth(characterEntity.getCharacterStealth());
-		characterResponseDto.setCharacterStrength(characterEntity.getCharacterStrength());
-		characterResponseDto.setCharacterTitle(characterEntity.getCharacterTitle());
-		characterResponseDto.setCharacterVitality(characterEntity.getCharacterVitality());
-		characterResponseDto.setCharacterWisdom(characterEntity.getCharacterWisdom());
 		return characterResponseDto;
 	}
 	

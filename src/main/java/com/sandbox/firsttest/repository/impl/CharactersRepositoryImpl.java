@@ -16,7 +16,6 @@ import com.sandbox.firsttest.repository.ICharactersRepository;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
-import jakarta.persistence.TypedQuery;
 import jakarta.persistence.criteria.CriteriaBuilder;
 import jakarta.persistence.criteria.CriteriaQuery;
 import jakarta.persistence.criteria.Join;
@@ -51,22 +50,23 @@ public class CharactersRepositoryImpl implements ICharactersRepository {
 		query.multiselect(characterEntity.get(CharacterEntity_.CHARACTER_ID),
 				characterEntity.get(CharacterEntity_.ACCOUNT_INFORMATION_ENTITY),
 				characterEntity.get(CharacterEntity_.BASE_WEAPON_ENTITY),
+				characterEntity.get(CharacterEntity_.CHARACTERS_STATS_ENTITY),
 				characterEntity.get(CharacterEntity_.CHARACTER_NAME),
-				characterEntity.get(CharacterEntity_.CHARACTER_TITLE),
-				characterEntity.get(CharacterEntity_.CHARACTER_STRENGTH),
-				characterEntity.get(CharacterEntity_.CHARACTER_AGILITY),
-				characterEntity.get(CharacterEntity_.CHARACTER_INTELLIGENCE),
-				characterEntity.get(CharacterEntity_.CHARACTER_WISDOM),
-				characterEntity.get(CharacterEntity_.CHARACTER_STEALTH),
-				characterEntity.get(CharacterEntity_.CHARACTER_VITALITY),
-				characterEntity.get(CharacterEntity_.CHARACTER_ENERGY),
-				characterEntity.get(CharacterEntity_.CHARACTER_LIFE));
+				characterEntity.get(CharacterEntity_.CHARACTER_TITLE));
 		query.where(predicates.stream().toArray(Predicate[]::new));
 		
-		TypedQuery<CharacterEntity> characters = session.createQuery(query);
-		characters.getResultList();
-		List<CharacterEntity> charactersEntities = characters.getResultList();
+		List<CharacterEntity> charactersEntities = session.createQuery(query).getResultList();
 		session.close();
 		return charactersEntities;
+	}
+
+	@Override
+	public CharacterEntity createCharacter(CharacterEntity createCharacterRequestEntity) {
+		Session session = HibernateConf.getSessionFactory().openSession();
+		session.beginTransaction();
+		session.persist(createCharacterRequestEntity);
+		session.flush();
+		session.close();
+		return createCharacterRequestEntity;
 	}
 }

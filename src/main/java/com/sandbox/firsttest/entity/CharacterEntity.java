@@ -3,6 +3,7 @@ package com.sandbox.firsttest.entity;
 import java.math.BigInteger;
 
 import jakarta.persistence.Basic;
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -32,64 +33,36 @@ public class CharacterEntity {
 	@Column(name="character_id",unique=true, nullable= false)
 	private BigInteger characterId;
 	
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name="account_id", nullable= false)
 	private AccountInformationEntity accountInformationEntity;
 	
 	@OneToOne
-	@JoinColumn(name="base_weapon_id", nullable= false)
+	@JoinColumn(name="base_weapon_id", nullable= true)
 	private BaseWeaponEntity baseWeaponEntity;
+	
+	@OneToOne
+	@JoinColumn(name="character_stats_id", nullable= true)
+	private CharacterStatsEntity charactersStatsEntity;
 	
 	@Column(name="character_name", nullable= false)
 	private String characterName;
 	
-	@Column(name="character_title", nullable= false)
+	@Column(name="character_title", nullable= true)
 	private String characterTitle;
-	
-	@Column(name="character_strength", nullable= false)
-	private Integer characterStrength;
-	
-	@Column(name="character_agility", nullable= false)
-	private Integer characterAgility;
-	
-	@Column(name="character_intelligence", nullable= false)
-	private Integer characterIntelligence;
-	
-	@Column(name="character_wisdom", nullable= false)
-	private Integer characterWisdom;
-	
-	@Column(name="character_stealth", nullable= false)
-	private Integer characterStealth;
-	
-	@Column(name="character_vitality", nullable= false)
-	private Integer characterVitality;
-	
-	@Column(name="character_energy", nullable= false)
-	private Integer characterEnergy;
-	
-	@Column(name="character_life", nullable= false)
-	private Float characterLife;
 
 	public CharacterEntity(Integer characterId, Integer accountInformationId,
-			Integer baseWeaponId, String characterName, String characterTitle, Integer characterStrength,
-			Integer characterAgility, Integer characterIntelligence, Integer characterWisdom, Integer characterStealth,
-			Integer characterVitality, Integer characterEnergy, Float characterLife) {
+			Integer baseWeaponId,Integer charactersStatsId, String characterName, String characterTitle) {
 		super();
 		this.characterId = BigInteger.valueOf(characterId);
 		this.accountInformationEntity = new AccountInformationEntity();
 		this.accountInformationEntity.setAccountId(BigInteger.valueOf(accountInformationId)); 
 		this.baseWeaponEntity = new BaseWeaponEntity();
 		this.baseWeaponEntity.setBaseWeapondId(BigInteger.valueOf(baseWeaponId));
+		this.charactersStatsEntity = new CharacterStatsEntity();
+		this.charactersStatsEntity.setCharacterStatsId(BigInteger.valueOf(charactersStatsId));
 		this.characterName = characterName;
 		this.characterTitle = characterTitle;
-		this.characterStrength = characterStrength;
-		this.characterAgility = characterAgility;
-		this.characterIntelligence = characterIntelligence;
-		this.characterWisdom = characterWisdom;
-		this.characterStealth = characterStealth;
-		this.characterVitality = characterVitality;
-		this.characterEnergy = characterEnergy;
-		this.characterLife = characterLife;
 	}
 	
 	

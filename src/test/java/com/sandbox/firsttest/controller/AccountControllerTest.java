@@ -52,9 +52,6 @@ class AccountControllerTest {
 	@Inject
     MockMvc mvc;
 	
-//	@Autowired
-//    private LocalValidatorFactoryBean validator;
-	
 	@Test
     void getAccountInformationOKTest() {
 		Mockito.when(accountService.getAccountInformation(ArgumentMatchers.anyInt())).thenReturn(new AIResponseDto());

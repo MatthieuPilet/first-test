@@ -54,6 +54,6 @@ public class AccountInformationEntity {
 	@CreationTimestamp
 	private Date accountSubscriptionDate;
 	
-	@OneToMany(mappedBy="accountInformationEntity", cascade = CascadeType.REMOVE)
+	@OneToMany(mappedBy="accountInformationEntity", cascade = CascadeType.ALL)
 	private List<CharacterEntity> characters;
 }

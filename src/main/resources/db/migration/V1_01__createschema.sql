@@ -30,6 +30,23 @@ CREATE TABLE BASE_WEAPON
     base_stat_energy INT
 );
 
+DROP TABLE IF EXISTS CHARACTERS_STATS;  
+DROP SEQUENCE IF EXISTS characters_stats_seq;
+
+CREATE SEQUENCE characters_stats_seq START WITH 1 INCREMENT BY 1;
+CREATE TABLE CHARACTERS_STATS
+(
+    character_stats_id BIGINT  DEFAULT NEXT VALUE FOR characters_stats_seq PRIMARY KEY NOT NULL,
+    character_strength INT,
+    character_agility INT,
+    character_intelligence INT,
+    character_wisdom INT,
+    character_stealth INT,
+    character_vitality INT,
+    character_energy INT,
+    character_life FLOAT
+);
+
 DROP TABLE IF EXISTS CHARACTERS;  
 DROP SEQUENCE IF EXISTS characters_seq;
 
@@ -38,20 +55,16 @@ CREATE TABLE CHARACTERS
 (
     character_id BIGINT  DEFAULT NEXT VALUE FOR characters_seq PRIMARY KEY NOT NULL,
     account_id BIGINT NOT NULL ,
-    base_weapon_id BIGINT NOT NULL ,
-    character_name VARCHAR(100),
+    base_weapon_id BIGINT ,
+    character_stats_id BIGINT ,
+    character_name VARCHAR(100) NOT NULL,
     character_title VARCHAR(100),
-    character_strength INT,
-    character_agility INT,
-    character_intelligence INT,
-    character_wisdom INT,
-    character_stealth INT,
-    character_vitality INT,
-    character_energy INT,
-    character_life FLOAT,
     FOREIGN KEY(account_id) REFERENCES ACCOUNT_INFORMATION,
-    FOREIGN KEY(base_weapon_id) REFERENCES BASE_WEAPON
+    FOREIGN KEY(base_weapon_id) REFERENCES BASE_WEAPON,
+    FOREIGN KEY(character_stats_id) REFERENCES CHARACTERS_STATS
 );
+
+
 
 DROP TABLE IF EXISTS SKILLS;  
 DROP SEQUENCE IF EXISTS skill_id_seq;

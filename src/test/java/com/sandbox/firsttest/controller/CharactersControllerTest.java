@@ -35,9 +35,16 @@ class CharactersControllerTest {
 	
 	
 	@Test
-    void getAccountInformationOKTest() {
+    void getCharactersOKTest() {
 		Mockito.when(charactersService.getCharacters(ArgumentMatchers.anyInt())).thenReturn(new ArrayList<>());
 		ResponseEntity<List<CharacterResponseDto>> characters = charactersController.getCharacters(ArgumentMatchers.any());
+        assertNotNull(characters);
+    }
+	
+	@Test
+    void createCharacterOKTest() {
+		Mockito.when(charactersService.createCharacter(ArgumentMatchers.any())).thenReturn(new CharacterResponseDto());
+		ResponseEntity<CharacterResponseDto> characters = charactersController.createCharacter(ArgumentMatchers.any());
         assertNotNull(characters);
     }
 }

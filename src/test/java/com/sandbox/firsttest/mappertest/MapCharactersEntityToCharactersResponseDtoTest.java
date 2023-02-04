@@ -17,8 +17,6 @@ import org.springframework.test.context.ContextConfiguration;
 
 import com.sandbox.firsttest.RunApplication;
 import com.sandbox.firsttest.dto.CharacterResponseDto;
-import com.sandbox.firsttest.entity.AccountInformationEntity;
-import com.sandbox.firsttest.entity.BaseWeaponEntity;
 import com.sandbox.firsttest.entity.CharacterEntity;
 import com.sandbox.firsttest.mapper.MapCharacterEntityToCharacterResponseDto;
 
@@ -36,21 +34,14 @@ class MapCharactersEntityToCharactersResponseDtoTest {
 	
 	@Test
 	void mapTest() {
-		CharacterEntity characterEntity = new CharacterEntity(1,1,1,"testUsername","testTitle",6,1,3,8,5,7,2,4f);		
+		CharacterEntity characterEntity = new CharacterEntity(1,1,1,1,"testUsername","testTitle");		
 		CharacterResponseDto characterResponseDto = mapCharacterEntityToCharacterResponseDto.map(characterEntity);
 		
 		assertNotNull(characterResponseDto);
 		assertEquals(BigInteger.valueOf(1), characterResponseDto.getAccountId());
 		assertEquals(BigInteger.valueOf(1), characterResponseDto.getBaseWeaponId());
 		assertEquals(BigInteger.valueOf(1), characterResponseDto.getCharacterId());
-		assertEquals(1, characterResponseDto.getCharacterAgility());
-		assertEquals(2, characterResponseDto.getCharacterEnergy());
-		assertEquals(3, characterResponseDto.getCharacterIntelligence());
-		assertEquals(4f, characterResponseDto.getCharacterLife());
-		assertEquals(5, characterResponseDto.getCharacterStealth());
-		assertEquals(6, characterResponseDto.getCharacterStrength());
-		assertEquals(7, characterResponseDto.getCharacterVitality());
-		assertEquals(8, characterResponseDto.getCharacterWisdom());
+		assertEquals(BigInteger.valueOf(1), characterResponseDto.getCharacterStatsId());
 		assertEquals("testTitle", characterResponseDto.getCharacterTitle());
 		assertEquals("testUsername", characterResponseDto.getCharacterName());
 		
@@ -59,9 +50,9 @@ class MapCharactersEntityToCharactersResponseDtoTest {
 	@Test
 	void mapListToListTest() {
 		List<CharacterEntity> characters = new ArrayList<>();
-		characters.add(new CharacterEntity(1,1,1,"testUsername","testTitle",6,1,3,8,5,7,2,4f));
-		characters.add(new CharacterEntity(2,1,1,"testUsername2","testTitle2",6,1,3,8,5,7,2,4f));
-		characters.add(new CharacterEntity(3,1,1,"testUsername3","testTitle3",6,1,3,8,5,7,2,4f));
+		characters.add(new CharacterEntity(1,1,1,1,"testUsername","testTitle"));
+		characters.add(new CharacterEntity(2,1,1,2,"testUsername2","testTitle2"));
+		characters.add(new CharacterEntity(3,1,1,3,"testUsername3","testTitle3"));
 
 		List<CharacterResponseDto> charactersResponse = mapCharacterEntityToCharacterResponseDto.mapListToList(characters);
 		assertEquals(3, charactersResponse.size());
