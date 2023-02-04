@@ -17,6 +17,7 @@ public class MapCharacterEntityToCharacterResponseDto {
 		characterResponseDto.setBaseWeaponId(characterEntity.getBaseWeaponEntity() != null ? characterEntity.getBaseWeaponEntity().getBaseWeapondId() : null);
 		characterResponseDto.setCharacterStatsId(characterEntity.getCharactersStatsEntity() != null ? characterEntity.getCharactersStatsEntity().getCharacterStatsId() : null);
 		characterResponseDto.setCharacterName(characterEntity.getCharacterName());
+		characterResponseDto.setCharacterTitle(characterEntity.getCharacterTitle());
 		return characterResponseDto;
 	}
 	
