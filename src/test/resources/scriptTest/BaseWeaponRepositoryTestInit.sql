@@ -1,0 +1,2 @@
+INSERT INTO BASE_WEAPON(base_weapon_id,base_weapon_name,base_stat_strength,base_stat_agility,base_stat_intelligence,base_stat_wisdom,base_stat_stealth,base_stat_vitality,base_stat_energy) VALUES (99999999,'Bow',8,9,6,5,7,4,6); 
+INSERT INTO BASE_WEAPON(base_weapon_id,base_weapon_name,base_stat_strength,base_stat_agility,base_stat_intelligence,base_stat_wisdom,base_stat_stealth,base_stat_vitality,base_stat_energy) VALUES (99999998,'Sword',10,6,5,4,5,9,7); 

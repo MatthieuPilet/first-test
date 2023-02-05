@@ -39,9 +39,23 @@ class CharactersControllerTest {
     }
 	
 	@Test
+    void getCharacterOKTest() {
+		Mockito.when(charactersService.getCharacter(ArgumentMatchers.anyInt())).thenReturn(new CharacterResponseDto());
+		ResponseEntity<CharacterResponseDto> character = charactersController.getCharacter(ArgumentMatchers.any());
+        assertNotNull(character);
+    }
+	
+	@Test
     void createCharacterOKTest() {
 		Mockito.when(charactersService.createCharacter(ArgumentMatchers.any())).thenReturn(new CharacterResponseDto());
 		ResponseEntity<CharacterResponseDto> characters = charactersController.createCharacter(ArgumentMatchers.any());
+        assertNotNull(characters);
+    }
+	
+	@Test
+    void updateWeaponCharacterOKTest() {
+		Mockito.when(charactersService.updateWeaponCharacter(ArgumentMatchers.any())).thenReturn(new CharacterResponseDto());
+		ResponseEntity<CharacterResponseDto> characters = charactersController.updateWeaponCharacter(ArgumentMatchers.any());
         assertNotNull(characters);
     }
 }

@@ -8,12 +8,14 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.sandbox.firsttest.dto.CharacterResponseDto;
 import com.sandbox.firsttest.dto.CreateCharacterRequestDto;
+import com.sandbox.firsttest.dto.UpdateWeaponCharacterRequestDto;
 import com.sandbox.firsttest.services.impl.CharactersServiceImpl;
 
 @CrossOrigin("http://localhost:3000")
@@ -29,9 +31,18 @@ public class CharactersController {
 		return new ResponseEntity<>(charactersServiceImpl.getCharacters(accountId),null,HttpStatus.OK);
 	}
 	
+	@GetMapping("character/{id}")
+	public ResponseEntity<CharacterResponseDto> getCharacter(@PathVariable("id") Integer characterId) {
+		return new ResponseEntity<>(charactersServiceImpl.getCharacter(characterId),null,HttpStatus.OK);
+	}
+	
 	@PutMapping("/createCharacter")
 	public ResponseEntity<CharacterResponseDto> createCharacter(CreateCharacterRequestDto createCharacterRequestDto) {
 		return new ResponseEntity<>(charactersServiceImpl.createCharacter(createCharacterRequestDto),null,HttpStatus.OK);
 	}
 
+	@PostMapping("/updateWeaponCharacter")
+	public ResponseEntity<CharacterResponseDto> updateWeaponCharacter(UpdateWeaponCharacterRequestDto updateWeaponCharacterRequestDto) {
+		return new ResponseEntity<>(charactersServiceImpl.updateWeaponCharacter(updateWeaponCharacterRequestDto),null,HttpStatus.OK);
+	}
 }

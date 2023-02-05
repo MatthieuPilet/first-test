@@ -38,11 +38,11 @@ public class CharacterEntity {
 	private AccountInformationEntity accountInformationEntity;
 	
 	@OneToOne
-	@JoinColumn(name="base_weapon_id", nullable= true)
+	@JoinColumn(name="base_weapon_id")
 	private BaseWeaponEntity baseWeaponEntity;
 	
 	@OneToOne
-	@JoinColumn(name="character_stats_id", nullable= true)
+	@JoinColumn(name="character_stats_id")
 	private CharacterStatsEntity charactersStatsEntity;
 	
 	@Column(name="character_name", nullable= false)

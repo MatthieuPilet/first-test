@@ -12,7 +12,9 @@ INSERT INTO CHARACTERS(account_id,base_weapon_id,character_stats_id,character_na
 			SELECT base_weapon_id from BASE_WEAPON where base_weapon_name='Bow',
 			SELECT character_stats_id from CHARACTERS_STATS where character_stats_id= 1 ,
 			'Test_name1','Test_title'); 
-			
+INSERT INTO CHARACTERS(account_id,character_name,character_title) 
+	VALUES (SELECT account_id FROM ACCOUNT_INFORMATION where account_username='test_username',
+			'Test_name1','Test_title'); 
 
 INSERT INTO SKILLS(base_weapon_id,skill_quality_code,skill_rarity_code,skill_quantity_available,skill_name,skill_effect,skill_value_effect,skill_value_calcul) VALUES (1,1,1,10,'Fire Arrow','damage flat',10,'substraction');
 INSERT INTO SKILLS(base_weapon_id,skill_quality_code,skill_rarity_code,skill_quantity_available,skill_name,skill_effect,skill_value_effect,skill_value_calcul) VALUES (1,1,1,10,'Celerity','boost agility',10,'add');

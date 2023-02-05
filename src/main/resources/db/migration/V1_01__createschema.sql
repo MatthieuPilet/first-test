@@ -55,8 +55,8 @@ CREATE TABLE CHARACTERS
 (
     character_id BIGINT  DEFAULT NEXT VALUE FOR characters_seq PRIMARY KEY NOT NULL,
     account_id BIGINT NOT NULL ,
-    base_weapon_id BIGINT ,
-    character_stats_id BIGINT ,
+    base_weapon_id BIGINT DEFAULT NULL,
+    character_stats_id BIGINT DEFAULT NULL,
     character_name VARCHAR(100) NOT NULL,
     character_title VARCHAR(100),
     FOREIGN KEY(account_id) REFERENCES ACCOUNT_INFORMATION,

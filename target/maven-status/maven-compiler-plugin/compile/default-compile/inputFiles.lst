@@ -1,6 +1,8 @@
 E:\Workspace\first-test\src\main\java\com\sandbox\firsttest\services\impl\AccountServiceImpl.java
 E:\Workspace\first-test\src\main\java\com\sandbox\firsttest\mapper\MapCreateCharacterRequestDtoToCharacterEntity.java
 E:\Workspace\first-test\src\main\java\com\sandbox\firsttest\dto\AIResponseDto.java
+E:\Workspace\first-test\src\main\java\com\sandbox\firsttest\dto\UpdateWeaponCharacterRequestDto.java
+E:\Workspace\first-test\src\main\java\com\sandbox\firsttest\repository\IBaseWeaponRepository.java
 E:\Workspace\first-test\src\main\java\com\sandbox\firsttest\mapper\MapAIRequestDtoToAIEntity.java
 E:\Workspace\first-test\src\main\java\com\sandbox\firsttest\entity\CharacterEntity.java
 E:\Workspace\first-test\src\main\java\com\sandbox\firsttest\dto\CreateCharacterRequestDto.java
@@ -12,6 +14,7 @@ E:\Workspace\first-test\src\main\java\com\sandbox\firsttest\dto\AIRequestDto.jav
 E:\Workspace\first-test\src\main\java\com\sandbox\firsttest\dto\UpdateAIRequestDto.java
 E:\Workspace\first-test\src\main\java\com\sandbox\firsttest\controller\AccountController.java
 E:\Workspace\first-test\src\main\java\com\sandbox\firsttest\controller\CharactersController.java
+E:\Workspace\first-test\src\main\java\com\sandbox\firsttest\repository\impl\BaseWeaponRepositoryImpl.java
 E:\Workspace\first-test\src\main\java\com\sandbox\firsttest\services\impl\CharactersServiceImpl.java
 E:\Workspace\first-test\src\main\java\com\sandbox\firsttest\mapper\MapUpdateAIRequestDtoToAIEntity.java
 E:\Workspace\first-test\src\main\java\com\sandbox\firsttest\RunApplication.java

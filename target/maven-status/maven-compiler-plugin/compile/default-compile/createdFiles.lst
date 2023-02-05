@@ -4,6 +4,7 @@ com\sandbox\firsttest\repository\IAccountRepository.class
 com\sandbox\firsttest\controller\CharactersController.class
 com\sandbox\firsttest\services\IAccountService.class
 com\sandbox\firsttest\mapper\MapCharacterEntityToCharacterResponseDto.class
+com\sandbox\firsttest\repository\impl\BaseWeaponRepositoryImpl.class
 com\sandbox\firsttest\repository\ICharactersRepository.class
 com\sandbox\firsttest\entity\AccountInformationEntity.class
 com\sandbox\firsttest\dto\AIRequestDto.class
@@ -12,6 +13,7 @@ com\sandbox\firsttest\mapper\MapUpdateAIRequestDtoToAIEntity.class
 com\sandbox\firsttest\dto\CreateCharacterRequestDto.class
 com\sandbox\firsttest\RunApplication.class
 com\sandbox\firsttest\services\impl\AccountServiceImpl.class
+com\sandbox\firsttest\dto\UpdateWeaponCharacterRequestDto.class
 com\sandbox\firsttest\controller\AccountController.class
 com\sandbox\firsttest\entity\CharacterEntity_.class
 com\sandbox\firsttest\repository\impl\AccountRepositoryImpl.class
@@ -27,4 +29,5 @@ com\sandbox\firsttest\mapper\MapAIRequestDtoToAIEntity.class
 com\sandbox\firsttest\repository\impl\CharactersRepositoryImpl.class
 com\sandbox\firsttest\config\HibernateConf.class
 com\sandbox\firsttest\services\impl\CharactersServiceImpl.class
+com\sandbox\firsttest\repository\IBaseWeaponRepository.class
 com\sandbox\firsttest\dto\CharacterResponseDto.class
