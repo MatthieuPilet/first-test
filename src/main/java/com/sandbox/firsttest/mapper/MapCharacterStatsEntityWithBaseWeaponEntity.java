@@ -1,6 +1,7 @@
 package com.sandbox.firsttest.mapper;
 
-import org.springframework.stereotype.Component;
+import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
 
 import com.sandbox.firsttest.entity.BaseWeaponEntity;
 import com.sandbox.firsttest.entity.CharacterStatsEntity;
@@ -11,8 +12,8 @@ import com.sandbox.firsttest.entity.CharacterStatsEntity;
  * @author Matthieu P
  * @version 1.0
  */
-@Component
-public class MapCharacterStatsEntityWithBaseWeaponEntity {
+@Mapper
+public interface MapCharacterStatsEntityWithBaseWeaponEntity {
 
 	/**
 	 * map {@link ChracterStatsEntity} with {@link BaseWeaponEntity}
@@ -20,16 +21,13 @@ public class MapCharacterStatsEntityWithBaseWeaponEntity {
 	 * @param baseWeaponEntity {@link BaseWeaponEntity}
 	 * @return {@link ChracterStatsEntity}
 	 */
-	public CharacterStatsEntity map(BaseWeaponEntity baseWeaponEntity) {
-		CharacterStatsEntity characterStatsEntity = new CharacterStatsEntity();
-		characterStatsEntity.setCharacterAgility(baseWeaponEntity.getBaseStatAgility());
-		characterStatsEntity.setCharacterEnergy(baseWeaponEntity.getBaseStatEnergy());
-		characterStatsEntity.setCharacterIntelligence(baseWeaponEntity.getBaseStatIntelligence());
-		characterStatsEntity.setCharacterLife(100f + (baseWeaponEntity.getBaseStatVitality() * 5));
-		characterStatsEntity.setCharacterStealth(baseWeaponEntity.getBaseStatStealth());
-		characterStatsEntity.setCharacterStrength(baseWeaponEntity.getBaseStatStrength());
-		characterStatsEntity.setCharacterVitality(baseWeaponEntity.getBaseStatVitality());
-		characterStatsEntity.setCharacterWisdom(baseWeaponEntity.getBaseStatWisdom());
-		return characterStatsEntity;
-	}
+	@Mapping(target="characterAgility", source = "baseWeaponEntity.baseStatAgility")
+	@Mapping(target="characterEnergy", source = "baseWeaponEntity.baseStatEnergy")
+	@Mapping(target="characterIntelligence", source = "baseWeaponEntity.baseStatIntelligence")
+	@Mapping(target="characterLife", expression = "java(100f + (baseWeaponEntity.getBaseStatVitality() * 5))")
+	@Mapping(target="characterStealth", source = "baseWeaponEntity.baseStatStealth")
+	@Mapping(target="characterStrength", source = "baseWeaponEntity.baseStatStrength")
+	@Mapping(target="characterVitality", source = "baseWeaponEntity.baseStatVitality")
+	@Mapping(target="characterWisdom", source = "baseWeaponEntity.baseStatWisdom")
+	public CharacterStatsEntity map(BaseWeaponEntity baseWeaponEntity);
 }

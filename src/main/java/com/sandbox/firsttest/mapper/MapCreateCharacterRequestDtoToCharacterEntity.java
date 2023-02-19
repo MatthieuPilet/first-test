@@ -1,6 +1,7 @@
 package com.sandbox.firsttest.mapper;
 
-import org.springframework.stereotype.Component;
+import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
 
 import com.sandbox.firsttest.dto.CreateCharacterRequestDto;
 import com.sandbox.firsttest.entity.AccountInformationEntity;
@@ -12,8 +13,8 @@ import com.sandbox.firsttest.entity.CharacterEntity;
  * @author Matthieu P
  * @version 1.0
  */
-@Component
-public class MapCreateCharacterRequestDtoToCharacterEntity {
+@Mapper
+public interface MapCreateCharacterRequestDtoToCharacterEntity {
 
 	/**
 	 * map {@link CreateCharacterRequestDto} and {@link AccountInformationEntity} to {@link CharacterEntity}
@@ -22,10 +23,6 @@ public class MapCreateCharacterRequestDtoToCharacterEntity {
 	 * @param aIEntity {@link AccountInformationEntity}
 	 * @return {@link CharacterEntity}
 	 */
-	public CharacterEntity map(CreateCharacterRequestDto createCharacterRequestDto, AccountInformationEntity aIEntity) {
-		CharacterEntity characterEntity = new CharacterEntity();
-		characterEntity.setCharacterName(createCharacterRequestDto.getCharacterName());
-		characterEntity.setAccountInformationEntity(aIEntity);
-		return characterEntity;
-	}
+	@Mapping(target="accountInformationEntity", source="aIEntity")
+	public CharacterEntity map(CreateCharacterRequestDto createCharacterRequestDto, AccountInformationEntity aIEntity);
 }

@@ -131,11 +131,48 @@
 	        <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
 	        <version>2.0.2</version>
 	   </dependency>
+	   <!--  #########MapStruct########-->
+	   <dependency>
+		    <groupId>org.mapstruct</groupId>
+		    <artifactId>mapstruct</artifactId>
+		    <version>1.5.3.Final</version> 
+		</dependency>
 	</dependencies>
 	
 	
 	<build>
 		<plugins>
+			<!--#########Plugins for MapStruct########-->
+	        <plugin>
+			    <groupId>org.apache.maven.plugins</groupId>
+			    <artifactId>maven-compiler-plugin</artifactId>
+			    <configuration>
+			        <source>1.8</source>
+			        <target>1.8</target>
+			        <annotationProcessorPaths>
+			            <path>
+			                <groupId>org.mapstruct</groupId>
+			                <artifactId>mapstruct-processor</artifactId>
+			                <version>1.5.3.Final</version>
+			            </path>
+						<path>
+						    <groupId>org.hibernate.orm</groupId>
+						    <artifactId>hibernate-jpamodelgen</artifactId>
+						    <version>6.1.6.Final</version>
+						</path>
+						<path>
+							<groupId>org.projectlombok</groupId>
+							<artifactId>lombok</artifactId>
+							<version>1.18.24</version>
+						</path>
+						<path>
+			                <groupId>org.projectlombok</groupId>
+			                <artifactId>lombok-mapstruct-binding</artifactId>
+			                <version>0.2.0</version>
+			            </path>
+			        </annotationProcessorPaths>
+			    </configuration>
+			</plugin>
 			<!--  #########Plugins to have coverage informations for sonar cloud########-->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -179,7 +216,8 @@
                     </configuration>
                 </execution>
             </executions>
-        </plugin>
+        	</plugin>
+        
 		</plugins>
 	</build>
 </project>

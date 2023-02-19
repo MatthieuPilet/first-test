@@ -1,6 +1,6 @@
 package com.sandbox.firsttest.mapper;
 
-import org.springframework.stereotype.Component;
+import org.mapstruct.Mapper;
 
 import com.sandbox.firsttest.dto.AIRequestDto;
 import com.sandbox.firsttest.entity.AccountInformationEntity;
@@ -11,8 +11,8 @@ import com.sandbox.firsttest.entity.AccountInformationEntity;
  * @author Matthieu P
  * @version 1.0
  */
-@Component
-public class MapAIRequestDtoToAIEntity {
+@Mapper
+public interface MapAIRequestDtoToAIEntity {
 
 	/**
 	 * map {@link AIRequestDto} to {@link AccountInformationEntity}
@@ -20,13 +20,5 @@ public class MapAIRequestDtoToAIEntity {
 	 * @param accountInformationRequestDto {@link AIRequestDto}
 	 * @return {@link AccountInformationEntity}
 	 */
-	public AccountInformationEntity map(AIRequestDto accountInformationRequestDto) {
-		AccountInformationEntity accountInformationEntity = new AccountInformationEntity();
-		accountInformationEntity.setAccountUsername(accountInformationRequestDto.getAccountUsername());
-		accountInformationEntity.setAccountPassword(accountInformationRequestDto.getAccountPassword());
-		accountInformationEntity.setAccountEmail(accountInformationRequestDto.getAccountEmail());
-		accountInformationEntity.setAccountAge(accountInformationRequestDto.getAccountAge());
-		accountInformationEntity.setAccountBirthday(accountInformationRequestDto.getAccountBirthday());
-		return accountInformationEntity;
-	}
+	public AccountInformationEntity map(AIRequestDto accountInformationRequestDto);
 }
