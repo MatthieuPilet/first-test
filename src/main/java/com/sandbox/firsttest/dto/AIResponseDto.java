@@ -7,6 +7,12 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+/**
+ * This DTO is the response of many account information operation, it contains lots of information of account
+ * 
+ * @author Matthieu P
+ * @version 1.0
+ */
 @Getter
 @Setter
 @NoArgsConstructor

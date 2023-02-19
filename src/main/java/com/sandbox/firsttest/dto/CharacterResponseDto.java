@@ -6,6 +6,12 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+/**
+ * This DTO contains all information of one character
+ * 
+ * @author Matthieu P
+ * @version 1.0
+ */
 @Getter
 @Setter
 @NoArgsConstructor

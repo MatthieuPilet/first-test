@@ -25,7 +25,9 @@ import com.sandbox.firsttest.dto.UpdateWeaponCharacterRequestDto;
 import com.sandbox.firsttest.entity.AccountInformationEntity;
 import com.sandbox.firsttest.entity.BaseWeaponEntity;
 import com.sandbox.firsttest.entity.CharacterEntity;
+import com.sandbox.firsttest.entity.CharacterStatsEntity;
 import com.sandbox.firsttest.mapper.MapCharacterEntityToCharacterResponseDto;
+import com.sandbox.firsttest.mapper.MapCharacterStatsEntityWithBaseWeaponEntity;
 import com.sandbox.firsttest.mapper.MapCreateCharacterRequestDtoToCharacterEntity;
 import com.sandbox.firsttest.repository.impl.AccountRepositoryImpl;
 import com.sandbox.firsttest.repository.impl.BaseWeaponRepositoryImpl;
@@ -58,6 +60,9 @@ class CharactersServiceTest {
 	@Mock
 	MapCreateCharacterRequestDtoToCharacterEntity mapCreateCharacterRequestDtoToCharacterEntity;
 	
+	@Mock
+	MapCharacterStatsEntityWithBaseWeaponEntity mapCharacterStatsEntityWithBaseWeaponEntity;
+	
 	@BeforeEach
 	void testInit() {
 		Mockito.when(charactersRepositoryImpl.getCharacters(ArgumentMatchers.any())).thenReturn(new ArrayList<>());
@@ -73,6 +78,7 @@ class CharactersServiceTest {
         Mockito.when(mapCharacterEntityToCharacterResponseDto.map(ArgumentMatchers.any())).thenReturn(new CharacterResponseDto());
         
         Mockito.when(mapCreateCharacterRequestDtoToCharacterEntity.map(ArgumentMatchers.any(),ArgumentMatchers.any())).thenReturn(new CharacterEntity());
+        Mockito.when(mapCharacterStatsEntityWithBaseWeaponEntity.map(ArgumentMatchers.any())).thenReturn(new CharacterStatsEntity());
 	}
 	
 	@Test

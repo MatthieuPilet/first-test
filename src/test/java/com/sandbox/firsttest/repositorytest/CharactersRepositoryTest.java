@@ -20,6 +20,7 @@ import com.sandbox.firsttest.RunApplication;
 import com.sandbox.firsttest.entity.AccountInformationEntity;
 import com.sandbox.firsttest.entity.BaseWeaponEntity;
 import com.sandbox.firsttest.entity.CharacterEntity;
+import com.sandbox.firsttest.repository.IAccountRepository;
 import com.sandbox.firsttest.repository.IBaseWeaponRepository;
 import com.sandbox.firsttest.repository.ICharactersRepository;
 
@@ -40,6 +41,9 @@ class CharactersRepositoryTest {
 	@Autowired
 	public IBaseWeaponRepository baseWeaponRepository;
 	
+	@Autowired
+	public IAccountRepository accountRepository;
+	
 	@Test
 	@Order(1)
 	void getCharactersTest() {
@@ -57,7 +61,7 @@ class CharactersRepositoryTest {
 	@Test
 	@Order(3)
 	void createCharacterTest() {
-		AccountInformationEntity accountInformationEntity = new AccountInformationEntity();
+		AccountInformationEntity accountInformationEntity = accountRepository.getAccountInformation(99999996);
 		CharacterEntity characterEntity = new CharacterEntity();
 		characterEntity.setAccountInformationEntity(accountInformationEntity);
 		characterEntity.setCharacterName("testCreate3");

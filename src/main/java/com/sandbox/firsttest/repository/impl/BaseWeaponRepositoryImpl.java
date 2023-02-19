@@ -7,19 +7,12 @@ import org.hibernate.Session;
 import org.springframework.stereotype.Repository;
 
 import com.sandbox.firsttest.config.HibernateConf;
-import com.sandbox.firsttest.entity.AccountInformationEntity;
-import com.sandbox.firsttest.entity.AccountInformationEntity_;
 import com.sandbox.firsttest.entity.BaseWeaponEntity;
 import com.sandbox.firsttest.entity.BaseWeaponEntity_;
-import com.sandbox.firsttest.entity.CharacterEntity;
-import com.sandbox.firsttest.entity.CharacterEntity_;
 import com.sandbox.firsttest.repository.IBaseWeaponRepository;
-import com.sandbox.firsttest.repository.ICharactersRepository;
 
 import jakarta.persistence.criteria.CriteriaBuilder;
 import jakarta.persistence.criteria.CriteriaQuery;
-import jakarta.persistence.criteria.Join;
-import jakarta.persistence.criteria.JoinType;
 import jakarta.persistence.criteria.Predicate;
 import jakarta.persistence.criteria.Root;
 

@@ -1,5 +1,6 @@
 package com.sandbox.firsttest.repository.impl;
 
+import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -37,7 +38,7 @@ public class CharactersRepositoryImpl implements ICharactersRepository {
 		query.multiselect(characterEntity.get(CharacterEntity_.CHARACTER_ID),
 				characterEntity.get(CharacterEntity_.ACCOUNT_INFORMATION_ENTITY),
 				characterEntity.get(CharacterEntity_.BASE_WEAPON_ENTITY),
-				characterEntity.get(CharacterEntity_.CHARACTERS_STATS_ENTITY),
+				characterEntity.get(CharacterEntity_.CHARACTER_STATS_ENTITY),
 				characterEntity.get(CharacterEntity_.CHARACTER_NAME),
 				characterEntity.get(CharacterEntity_.CHARACTER_TITLE));
 		query.where(predicates.stream().toArray(Predicate[]::new));
@@ -53,18 +54,20 @@ public class CharactersRepositoryImpl implements ICharactersRepository {
 		CriteriaBuilder cb = session.getCriteriaBuilder();
 		CriteriaQuery<CharacterEntity> query = cb.createQuery(CharacterEntity.class);
 		Root<CharacterEntity> characterEntity = query.from(CharacterEntity.class);
+		Join<CharacterEntity, CharacterEntity> baseWeaponEntityJoin = characterEntity.join(CharacterEntity_.BASE_WEAPON_ENTITY, JoinType.LEFT);
+		Join<CharacterEntity, CharacterEntity> characterStatsEntityJoin = characterEntity.join(CharacterEntity_.CHARACTER_STATS_ENTITY, JoinType.LEFT);
 		
 		List<Predicate> predicates = new ArrayList<>();
-		predicates.add(cb.equal(characterEntity.get(CharacterEntity_.CHARACTER_ID),characterId));
+		predicates.add(cb.equal(characterEntity.get(CharacterEntity_.CHARACTER_ID),BigInteger.valueOf(characterId)));
 		
 		query.multiselect(characterEntity.get(CharacterEntity_.CHARACTER_ID),
 				characterEntity.get(CharacterEntity_.ACCOUNT_INFORMATION_ENTITY),
-				characterEntity.get(CharacterEntity_.BASE_WEAPON_ENTITY),
-				characterEntity.get(CharacterEntity_.CHARACTERS_STATS_ENTITY),
+				baseWeaponEntityJoin,
+				characterStatsEntityJoin,
 				characterEntity.get(CharacterEntity_.CHARACTER_NAME),
 				characterEntity.get(CharacterEntity_.CHARACTER_TITLE));
 		query.where(predicates.stream().toArray(Predicate[]::new));
-		
+
 		CharacterEntity characterEntityResult = session.createQuery(query).getSingleResult();
 		session.close();
 		return characterEntityResult;

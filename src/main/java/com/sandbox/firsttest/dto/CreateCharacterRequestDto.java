@@ -3,10 +3,14 @@ package com.sandbox.firsttest.dto;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
+/**
+ * This DTO is to first creation of a character
+ * 
+ * @author Matthieu P
+ * @version
+ */
 @Getter
-@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 public class CreateCharacterRequestDto {

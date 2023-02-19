@@ -7,6 +7,12 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+/**
+ * This DTO is for update the account information
+ * 
+ * @author Matthieu P
+ * @version 1.0
+ */
 @Getter
 @Setter
 @NoArgsConstructor
