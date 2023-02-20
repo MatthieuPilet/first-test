@@ -16,7 +16,7 @@ import org.springframework.test.context.ContextConfiguration;
 import com.sandbox.firsttest.RunApplication;
 import com.sandbox.firsttest.dto.UpdateAIRequestDto;
 import com.sandbox.firsttest.entity.AccountInformationEntity;
-import com.sandbox.firsttest.mapper.MapUpdateAIRequestDtoToAIEntity;
+import com.sandbox.firsttest.mapper.MapUpdateAIRequestDtoToAIEntityImpl;
 
 /**
  * 
@@ -28,7 +28,7 @@ import com.sandbox.firsttest.mapper.MapUpdateAIRequestDtoToAIEntity;
 class MapUpdateAIRequestDtoToAIEntityTest {
 
 	@Autowired
-	public MapUpdateAIRequestDtoToAIEntity mapUpdateAIRequestDtoToAIEntity;
+	public MapUpdateAIRequestDtoToAIEntityImpl mapUpdateAIRequestDtoToAIEntity;
 	
 	@Test
 	void mapTest() {

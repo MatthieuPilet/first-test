@@ -12,9 +12,9 @@ import com.sandbox.firsttest.entity.AccountInformationEntity;
 import com.sandbox.firsttest.entity.BaseWeaponEntity;
 import com.sandbox.firsttest.entity.CharacterEntity;
 import com.sandbox.firsttest.entity.CharacterStatsEntity;
-import com.sandbox.firsttest.mapper.MapCharacterEntityToCharacterResponseDto;
-import com.sandbox.firsttest.mapper.MapCharacterStatsEntityWithBaseWeaponEntity;
-import com.sandbox.firsttest.mapper.MapCreateCharacterRequestDtoToCharacterEntity;
+import com.sandbox.firsttest.mapper.MapCharacterEntityToCharacterResponseDtoImpl;
+import com.sandbox.firsttest.mapper.MapCharacterStatsEntityWithBaseWeaponEntityImpl;
+import com.sandbox.firsttest.mapper.MapCreateCharacterRequestDtoToCharacterEntityImpl;
 import com.sandbox.firsttest.repository.impl.AccountRepositoryImpl;
 import com.sandbox.firsttest.repository.impl.BaseWeaponRepositoryImpl;
 import com.sandbox.firsttest.repository.impl.CharactersRepositoryImpl;
@@ -33,13 +33,13 @@ public class CharactersServiceImpl implements ICharactersService {
 	BaseWeaponRepositoryImpl baseWeaponRepositoryImpl;
 
 	@Autowired
-	MapCharacterEntityToCharacterResponseDto mapCharacterEntityToCharacterResponseDto;
+	MapCharacterEntityToCharacterResponseDtoImpl mapCharacterEntityToCharacterResponseDto;
 
 	@Autowired
-	MapCreateCharacterRequestDtoToCharacterEntity mapCreateCharacterRequestDtoToCharacterEntity;
+	MapCreateCharacterRequestDtoToCharacterEntityImpl mapCreateCharacterRequestDtoToCharacterEntity;
 	
 	@Autowired
-	MapCharacterStatsEntityWithBaseWeaponEntity mapCharacterStatsEntityWithBaseWeaponEntity;
+	MapCharacterStatsEntityWithBaseWeaponEntityImpl mapCharacterStatsEntityWithBaseWeaponEntity;
 
 	@Override
 	public List<CharacterResponseDto> getCharacters(Integer accountId) {

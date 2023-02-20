@@ -14,7 +14,7 @@ import org.springframework.test.context.ContextConfiguration;
 import com.sandbox.firsttest.RunApplication;
 import com.sandbox.firsttest.entity.BaseWeaponEntity;
 import com.sandbox.firsttest.entity.CharacterStatsEntity;
-import com.sandbox.firsttest.mapper.MapCharacterStatsEntityWithBaseWeaponEntity;
+import com.sandbox.firsttest.mapper.MapCharacterStatsEntityWithBaseWeaponEntityImpl;
 
 /**
  * 
@@ -26,7 +26,7 @@ import com.sandbox.firsttest.mapper.MapCharacterStatsEntityWithBaseWeaponEntity;
 class MapCharacterStatsEntityWithBaseWeaponEntityTest {
 
 	@Autowired
-	public MapCharacterStatsEntityWithBaseWeaponEntity mapCharacterStatsEntityWithBaseWeaponEntity;
+	public MapCharacterStatsEntityWithBaseWeaponEntityImpl mapCharacterStatsEntityWithBaseWeaponEntity;
 	
 	@Test
 	void mapTest() {

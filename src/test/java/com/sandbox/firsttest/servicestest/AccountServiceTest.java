@@ -16,10 +16,11 @@ import org.springframework.test.context.ContextConfiguration;
 import com.sandbox.firsttest.RunApplication;
 import com.sandbox.firsttest.dto.AIRequestDto;
 import com.sandbox.firsttest.dto.AIResponseDto;
+import com.sandbox.firsttest.dto.UpdateAIRequestDto;
 import com.sandbox.firsttest.entity.AccountInformationEntity;
-import com.sandbox.firsttest.mapper.MapAIEntityToAIResponseDto;
-import com.sandbox.firsttest.mapper.MapAIRequestDtoToAIEntity;
-import com.sandbox.firsttest.mapper.MapUpdateAIRequestDtoToAIEntity;
+import com.sandbox.firsttest.mapper.MapAIEntityToAIResponseDtoImpl;
+import com.sandbox.firsttest.mapper.MapAIRequestDtoToAIEntityImpl;
+import com.sandbox.firsttest.mapper.MapUpdateAIRequestDtoToAIEntityImpl;
 import com.sandbox.firsttest.repository.impl.AccountRepositoryImpl;
 import com.sandbox.firsttest.services.impl.AccountServiceImpl;
 
@@ -38,13 +39,13 @@ class AccountServiceTest {
 	AccountRepositoryImpl accountRepositoryImpl;
 	
 	@Mock
-	MapAIEntityToAIResponseDto mapAIEntityToAIResponseDto;
+	MapAIEntityToAIResponseDtoImpl mapAIEntityToAIResponseDto;
 	
 	@Mock
-	MapUpdateAIRequestDtoToAIEntity mapUpdateAIRequestDtoToAIEntity;
+	MapUpdateAIRequestDtoToAIEntityImpl mapUpdateAIRequestDtoToAIEntity;
 	
 	@Mock
-	MapAIRequestDtoToAIEntity mapAIRequestDtoToAIEntity;
+	MapAIRequestDtoToAIEntityImpl mapAIRequestDtoToAIEntity;
 	
 	@Test
     void getAccountInformationOKTest() {
@@ -75,7 +76,7 @@ class AccountServiceTest {
 		Mockito.when(mapAIEntityToAIResponseDto.map(ArgumentMatchers.any())).thenReturn(new AIResponseDto());
 		Mockito.when(accountRepositoryImpl.updateAccountInformation(ArgumentMatchers.any())).thenReturn(new AccountInformationEntity());
 		Mockito.when(mapUpdateAIRequestDtoToAIEntity.map(ArgumentMatchers.any())).thenReturn(new AccountInformationEntity());
-		AIResponseDto aIResponseDto = accountService.updateAccountInformation(ArgumentMatchers.any());
+		AIResponseDto aIResponseDto = accountService.updateAccountInformation(new UpdateAIRequestDto());
         assertNotNull(aIResponseDto);
     }
 }

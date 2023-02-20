@@ -17,7 +17,7 @@ import com.sandbox.firsttest.RunApplication;
 import com.sandbox.firsttest.dto.CreateCharacterRequestDto;
 import com.sandbox.firsttest.entity.AccountInformationEntity;
 import com.sandbox.firsttest.entity.CharacterEntity;
-import com.sandbox.firsttest.mapper.MapCreateCharacterRequestDtoToCharacterEntity;
+import com.sandbox.firsttest.mapper.MapCreateCharacterRequestDtoToCharacterEntityImpl;
 
 /**
  * 
@@ -29,7 +29,7 @@ import com.sandbox.firsttest.mapper.MapCreateCharacterRequestDtoToCharacterEntit
 class MapCreateCharacterRequestDtoToCharactersEntityTest {
 
 	@Autowired
-	public MapCreateCharacterRequestDtoToCharacterEntity mapCreateCharacterRequestDtoToCharactersEntity;
+	public MapCreateCharacterRequestDtoToCharacterEntityImpl mapCreateCharacterRequestDtoToCharactersEntity;
 	
 	@Test
 	void mapTest() {

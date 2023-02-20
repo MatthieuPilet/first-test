@@ -11,6 +11,7 @@ com\sandbox\firsttest\repository\ICharactersRepository.class
 com\sandbox\firsttest\mapper\MapAIEntityToAIResponseDtoImpl.class
 com\sandbox\firsttest\entity\AccountInformationEntity.class
 com\sandbox\firsttest\dto\AIRequestDto.class
+com\sandbox\firsttest\mapper\MapCharacterEntityToCharacterResponseDtoImpl.class
 com\sandbox\firsttest\mapper\MapCreateCharacterRequestDtoToCharacterEntity.class
 com\sandbox\firsttest\mapper\MapUpdateAIRequestDtoToAIEntity.class
 com\sandbox\firsttest\repository\impl\CharacterStatsRepositoryImpl.class

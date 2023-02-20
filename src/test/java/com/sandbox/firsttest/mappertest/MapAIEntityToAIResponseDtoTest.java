@@ -19,7 +19,7 @@ import org.springframework.test.context.ContextConfiguration;
 import com.sandbox.firsttest.RunApplication;
 import com.sandbox.firsttest.dto.AIResponseDto;
 import com.sandbox.firsttest.entity.AccountInformationEntity;
-import com.sandbox.firsttest.mapper.MapAIEntityToAIResponseDto;
+import com.sandbox.firsttest.mapper.MapAIEntityToAIResponseDtoImpl;
 
 /**
  * 
@@ -31,7 +31,7 @@ import com.sandbox.firsttest.mapper.MapAIEntityToAIResponseDto;
 class MapAIEntityToAIResponseDtoTest {
 
 	@Autowired
-	public MapAIEntityToAIResponseDto mapAIEntityToAIResponseDto;
+	public MapAIEntityToAIResponseDtoImpl mapAIEntityToAIResponseDto;
 	
 	@Test
 	void mapTest() {

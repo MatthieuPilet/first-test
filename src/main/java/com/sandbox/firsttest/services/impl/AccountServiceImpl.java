@@ -7,9 +7,9 @@ import com.sandbox.firsttest.dto.AIRequestDto;
 import com.sandbox.firsttest.dto.AIResponseDto;
 import com.sandbox.firsttest.dto.UpdateAIRequestDto;
 import com.sandbox.firsttest.entity.AccountInformationEntity;
-import com.sandbox.firsttest.mapper.MapAIEntityToAIResponseDto;
-import com.sandbox.firsttest.mapper.MapAIRequestDtoToAIEntity;
-import com.sandbox.firsttest.mapper.MapUpdateAIRequestDtoToAIEntity;
+import com.sandbox.firsttest.mapper.MapAIEntityToAIResponseDtoImpl;
+import com.sandbox.firsttest.mapper.MapAIRequestDtoToAIEntityImpl;
+import com.sandbox.firsttest.mapper.MapUpdateAIRequestDtoToAIEntityImpl;
 import com.sandbox.firsttest.repository.impl.AccountRepositoryImpl;
 import com.sandbox.firsttest.services.IAccountService;
 
@@ -20,11 +20,11 @@ public class AccountServiceImpl implements IAccountService{
 	AccountRepositoryImpl accountRepositoryImpl;
 	
 	@Autowired
-	MapAIEntityToAIResponseDto mapAIEntityToAIDto;
+	MapAIEntityToAIResponseDtoImpl mapAIEntityToAIDto;
 	@Autowired
-	MapAIRequestDtoToAIEntity mapAIRequestDtoToAIEntity;
+	MapAIRequestDtoToAIEntityImpl mapAIRequestDtoToAIEntity;
 	@Autowired
-	MapUpdateAIRequestDtoToAIEntity mapUpdateAIRequestDtoToAIEntity;
+	MapUpdateAIRequestDtoToAIEntityImpl mapUpdateAIRequestDtoToAIEntity;
 
 	@Override
 	public AIResponseDto getAccountInformation(Integer id) {

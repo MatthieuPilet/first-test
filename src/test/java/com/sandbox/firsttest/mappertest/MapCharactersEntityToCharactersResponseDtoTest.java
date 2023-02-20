@@ -18,7 +18,7 @@ import org.springframework.test.context.ContextConfiguration;
 import com.sandbox.firsttest.RunApplication;
 import com.sandbox.firsttest.dto.CharacterResponseDto;
 import com.sandbox.firsttest.entity.CharacterEntity;
-import com.sandbox.firsttest.mapper.MapCharacterEntityToCharacterResponseDto;
+import com.sandbox.firsttest.mapper.MapCharacterEntityToCharacterResponseDtoImpl;
 
 /**
  * 
@@ -30,7 +30,7 @@ import com.sandbox.firsttest.mapper.MapCharacterEntityToCharacterResponseDto;
 class MapCharactersEntityToCharactersResponseDtoTest {
 
 	@Autowired
-	public MapCharacterEntityToCharacterResponseDto mapCharacterEntityToCharacterResponseDto;
+	public MapCharacterEntityToCharacterResponseDtoImpl mapCharacterEntityToCharacterResponseDto;
 	
 	@Test
 	void mapTest() {
