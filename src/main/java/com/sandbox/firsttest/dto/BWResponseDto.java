@@ -1,7 +1,6 @@
 package com.sandbox.firsttest.dto;
 
 import java.math.BigInteger;
-import java.util.Date;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
