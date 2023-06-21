@@ -1,3 +1,4 @@
+com\sandbox\firsttest\mapper\MapCreateCharacterStatsEntity.class
 com\sandbox\firsttest\entity\BaseWeaponEntity.class
 com\sandbox\firsttest\entity\CharacterEntity.class
 com\sandbox\firsttest\repository\IAccountRepository.class

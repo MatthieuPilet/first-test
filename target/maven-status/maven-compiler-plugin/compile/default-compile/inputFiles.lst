@@ -29,4 +29,5 @@ E:\Workspace\first-test\src\main\java\com\sandbox\firsttest\dto\CharacterRespons
 E:\Workspace\first-test\src\main\java\com\sandbox\firsttest\repository\ICharactersRepository.java
 E:\Workspace\first-test\src\main\java\com\sandbox\firsttest\services\IAccountService.java
 E:\Workspace\first-test\src\main\java\com\sandbox\firsttest\config\HibernateConf.java
+E:\Workspace\first-test\src\main\java\com\sandbox\firsttest\mapper\MapCreateCharacterStatsEntity.java
 E:\Workspace\first-test\src\main\java\com\sandbox\firsttest\mapper\MapAIEntityToAIResponseDto.java

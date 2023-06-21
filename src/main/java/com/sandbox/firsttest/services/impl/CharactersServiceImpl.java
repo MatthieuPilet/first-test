@@ -11,10 +11,10 @@ import com.sandbox.firsttest.dto.UpdateWeaponCharacterRequestDto;
 import com.sandbox.firsttest.entity.AccountInformationEntity;
 import com.sandbox.firsttest.entity.BaseWeaponEntity;
 import com.sandbox.firsttest.entity.CharacterEntity;
-import com.sandbox.firsttest.entity.CharacterStatsEntity;
 import com.sandbox.firsttest.mapper.MapCharacterEntityToCharacterResponseDtoImpl;
 import com.sandbox.firsttest.mapper.MapCharacterStatsEntityWithBaseWeaponEntityImpl;
 import com.sandbox.firsttest.mapper.MapCreateCharacterRequestDtoToCharacterEntityImpl;
+import com.sandbox.firsttest.mapper.MapCreateCharacterStatsEntity;
 import com.sandbox.firsttest.repository.impl.AccountRepositoryImpl;
 import com.sandbox.firsttest.repository.impl.BaseWeaponRepositoryImpl;
 import com.sandbox.firsttest.repository.impl.CharactersRepositoryImpl;
@@ -40,6 +40,9 @@ public class CharactersServiceImpl implements ICharactersService {
 	
 	@Autowired
 	MapCharacterStatsEntityWithBaseWeaponEntityImpl mapCharacterStatsEntityWithBaseWeaponEntity;
+	
+	@Autowired
+	MapCreateCharacterStatsEntity mapCreateCharacterStatsEntity;
 
 	@Override
 	public List<CharacterResponseDto> getCharacters(Integer accountId) {
@@ -77,141 +80,13 @@ public class CharactersServiceImpl implements ICharactersService {
 					.getBaseWeapon(characterEntityRequest.getBaseWeaponEntity().getBaseWeapondId().intValue());
 		}
 		characterEntityRequest.setBaseWeaponEntity(baseWeaponEntity);
-		characterEntityRequest.setCharacterStatsEntity(createCharacterStatsEntity(baseWeaponEntity,characterEntityRequest,baseWeaponEntityOld));
+		if(null != characterEntityRequest.getCharacterStatsEntity()) {
+			characterEntityRequest.setCharacterStatsEntity(mapCreateCharacterStatsEntity.map(baseWeaponEntity,characterEntityRequest,baseWeaponEntityOld));
+		} else {
+			characterEntityRequest.setCharacterStatsEntity(mapCharacterStatsEntityWithBaseWeaponEntity.map(baseWeaponEntity));
+		}
 		CharacterEntity characterEntityResponse = charactersRepositoryImpl
 				.updateWeaponCharacter(characterEntityRequest);
 		return mapCharacterEntityToCharacterResponseDto.map(characterEntityResponse);
-	}
-
-	/**
-	 * The purpose of this method is to create or update {@link CharacterStatsEntity}
-	 * through the first take or update {@link BaseWeaponEntity}
-	 * it use and other method {@code calculNewStat}
-	 * 
-	 * @param {@link BaseWeaponEntity}
-	 * @param  {@link CharacterEntity}
-	 * @return {@link CharacterEntity} with {@link CharacterStatsEntity} update
-	 */
-	private CharacterStatsEntity createCharacterStatsEntity(BaseWeaponEntity baseWeaponEntity,CharacterEntity characterEntity,BaseWeaponEntity baseWeaponEntityOld) {
-		CharacterStatsEntity characterStatsEntity = new CharacterStatsEntity();
-		if(baseWeaponEntityOld == null && null != characterEntity.getCharacterStatsEntity()) {
-			characterStatsEntity.setCharacterStatsId(
-					characterEntity.getCharacterStatsEntity() != null
-					? characterEntity.getCharacterStatsEntity().getCharacterStatsId()
-					: null);
-			characterStatsEntity.setCharacterAgility(calculNewStat(
-					characterEntity, 
-					characterEntity.getCharacterStatsEntity().getCharacterAgility(),
-					baseWeaponEntity.getBaseStatAgility(),
-					0)
-			);
-			characterStatsEntity.setCharacterEnergy(calculNewStat(
-					characterEntity, 
-					characterEntity.getCharacterStatsEntity().getCharacterEnergy(),
-					baseWeaponEntity.getBaseStatEnergy(),
-					0)
-			);
-			characterStatsEntity.setCharacterIntelligence(calculNewStat(
-					characterEntity, 
-					characterEntity.getCharacterStatsEntity().getCharacterIntelligence(),
-					baseWeaponEntity.getBaseStatIntelligence(),
-					0)
-			);
-			characterStatsEntity.setCharacterLife(characterEntity.getCharacterStatsEntity() != null
-					? characterEntity.getCharacterStatsEntity().getCharacterLife() + (baseWeaponEntity.getBaseStatVitality() * 5)
-					: 100f);
-			characterStatsEntity.setCharacterStealth(calculNewStat(
-					characterEntity, 
-					characterEntity.getCharacterStatsEntity().getCharacterStealth(),
-					baseWeaponEntity.getBaseStatStealth(),
-					0)
-			);
-			characterStatsEntity.setCharacterStrength(calculNewStat(
-					characterEntity, 
-					characterEntity.getCharacterStatsEntity().getCharacterStrength(),
-					baseWeaponEntity.getBaseStatStrength(),
-					0)
-			);
-			characterStatsEntity.setCharacterVitality(calculNewStat(
-					characterEntity, 
-					characterEntity.getCharacterStatsEntity().getCharacterVitality(),
-					baseWeaponEntity.getBaseStatVitality(),
-					0)
-			);
-			characterStatsEntity.setCharacterWisdom(calculNewStat(
-					characterEntity, 
-					characterEntity.getCharacterStatsEntity().getCharacterWisdom(),
-					baseWeaponEntity.getBaseStatWisdom(),
-					0)
-			);
-		} else if (baseWeaponEntityOld != null && null != characterEntity.getCharacterStatsEntity()){
-			characterStatsEntity.setCharacterStatsId(
-					characterEntity.getCharacterStatsEntity() != null
-					? characterEntity.getCharacterStatsEntity().getCharacterStatsId()
-					: null);
-			characterStatsEntity.setCharacterAgility(calculNewStat(
-					characterEntity, 
-					characterEntity.getCharacterStatsEntity().getCharacterAgility(),
-					baseWeaponEntity.getBaseStatAgility(),
-					baseWeaponEntityOld.getBaseStatAgility())
-			);
-			characterStatsEntity.setCharacterEnergy(calculNewStat(
-					characterEntity, 
-					characterEntity.getCharacterStatsEntity().getCharacterEnergy(),
-					baseWeaponEntity.getBaseStatEnergy(),
-					baseWeaponEntityOld.getBaseStatEnergy())
-			);
-			characterStatsEntity.setCharacterIntelligence(calculNewStat(
-					characterEntity, 
-					characterEntity.getCharacterStatsEntity().getCharacterIntelligence(),
-					baseWeaponEntity.getBaseStatIntelligence(),
-					baseWeaponEntityOld.getBaseStatIntelligence())
-			);
-			characterStatsEntity.setCharacterLife(characterEntity.getCharacterStatsEntity() != null
-					? characterEntity.getCharacterStatsEntity().getCharacterLife() + (baseWeaponEntity.getBaseStatVitality() * 5) - (baseWeaponEntityOld.getBaseStatVitality() * 5)
-					: 100f);
-			characterStatsEntity.setCharacterStealth(calculNewStat(
-					characterEntity, 
-					characterEntity.getCharacterStatsEntity().getCharacterStealth(),
-					baseWeaponEntity.getBaseStatStealth(),
-					baseWeaponEntityOld.getBaseStatStealth())
-			);
-			characterStatsEntity.setCharacterStrength(calculNewStat(
-					characterEntity, 
-					characterEntity.getCharacterStatsEntity().getCharacterStrength(),
-					baseWeaponEntity.getBaseStatStrength(),
-					baseWeaponEntityOld.getBaseStatStrength())
-			);
-			characterStatsEntity.setCharacterVitality(calculNewStat(
-					characterEntity, 
-					characterEntity.getCharacterStatsEntity().getCharacterVitality(),
-					baseWeaponEntity.getBaseStatVitality(),
-					baseWeaponEntityOld.getBaseStatVitality())
-			);
-			characterStatsEntity.setCharacterWisdom(calculNewStat(
-					characterEntity, 
-					characterEntity.getCharacterStatsEntity().getCharacterWisdom(),
-					baseWeaponEntity.getBaseStatWisdom(),
-					baseWeaponEntityOld.getBaseStatWisdom())
-			);
-		} else {
-			characterStatsEntity = mapCharacterStatsEntityWithBaseWeaponEntity.map(baseWeaponEntity);
-		}
-		return characterStatsEntity;
-	}
-
-	/**
-	 * @param characterEntity characterEntity to check Null
-	 * @param statToUpdate 
-	 * @param baseStat
-	 * @param baseStatOld  0 if it's creation
-	 * @return The value of the stat
-	 */
-	private Integer calculNewStat(CharacterEntity characterEntity, Integer statToUpdate, Integer baseStat, Integer baseStatOld) {
-		if(characterEntity.getCharacterStatsEntity() != null) {
-			return statToUpdate + baseStat - baseStatOld;
-		} else {
-			return baseStat;
-		}
 	}
 }
