@@ -74,7 +74,7 @@ class MapCreateCharacterStatsEntityTest {
 	}
 	
 	@Test
-	void mapTestNull() {
+	void mapTestBaseWeaponEntityOldNull() {
 		BaseWeaponEntity baseWeaponEntity = new BaseWeaponEntity();
 		baseWeaponEntity.setBaseStatAgility(2);
 		baseWeaponEntity.setBaseStatEnergy(2);
