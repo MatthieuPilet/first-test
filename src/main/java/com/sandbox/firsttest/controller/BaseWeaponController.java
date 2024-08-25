@@ -1,5 +1,7 @@
 package com.sandbox.firsttest.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -35,5 +37,15 @@ public class BaseWeaponController {
 	@GetMapping("/{id}")
 	public ResponseEntity<BWResponseDto> getBaseWeapon(@PathVariable("id") Integer id) {
 		return new ResponseEntity<>(baseWeaponServiceImpl.getBaseWeapon(id),null,HttpStatus.OK);
+	}
+	
+	/**
+	 * This method is to get all base weapon 
+	 * 
+	 * @return List<{@link BWResponseDto}>
+	 */
+	@GetMapping("")
+	public ResponseEntity<List<BWResponseDto>> getBaseWeapons() {
+		return new ResponseEntity<>(baseWeaponServiceImpl.getBaseWeapons(),null,HttpStatus.OK);
 	}
 }

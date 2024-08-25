@@ -5,6 +5,10 @@ package com.sandbox.firsttest.controller;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import org.junit.Rule;
 import org.junit.jupiter.api.Test;
 import org.mockito.ArgumentMatchers;
 import org.mockito.InjectMocks;
@@ -34,6 +38,13 @@ class BaseWeaponControllerTest {
     void getBaseWeaponOKTest() {
 		Mockito.when(baseWeaponService.getBaseWeapon(ArgumentMatchers.anyInt())).thenReturn(new BWResponseDto());
 		ResponseEntity<BWResponseDto> baseWeaponResponseDto = baseWeaponController.getBaseWeapon(ArgumentMatchers.any());
+        assertNotNull(baseWeaponResponseDto);
+    }
+	
+	@Test
+    void getBaseWeaponsOKTest() {
+		Mockito.when(baseWeaponService.getBaseWeapons()).thenReturn(new ArrayList<>());
+		ResponseEntity<List<BWResponseDto>> baseWeaponResponseDto = baseWeaponController.getBaseWeapons();
         assertNotNull(baseWeaponResponseDto);
     }
 }

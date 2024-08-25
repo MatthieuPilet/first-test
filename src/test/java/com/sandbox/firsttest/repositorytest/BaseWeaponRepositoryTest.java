@@ -5,6 +5,8 @@ package com.sandbox.firsttest.repositorytest;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
+import java.util.List;
+
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,4 +40,10 @@ class BaseWeaponRepositoryTest {
 		assertNotNull(baseWeaponEntity);
 	}
 
+	@Test
+	@Order(2)
+	void getBaseWeaponsTest() {
+		List<BaseWeaponEntity> baseWeaponEntity = baseWeaponRepository.getBaseWeapons();
+		assertNotNull(baseWeaponEntity);
+	}
 }

@@ -1,5 +1,7 @@
 package com.sandbox.firsttest.repository;
 
+import java.util.List;
+
 import com.sandbox.firsttest.entity.BaseWeaponEntity;
 
 /**
@@ -17,4 +19,11 @@ public interface IBaseWeaponRepository {
 	 * @return {@link BaseWeaponEntity}
 	 */
 	public BaseWeaponEntity getBaseWeapon(Integer baseWeaponId);
+	
+	/**
+	 * Get Base Weapons 
+	 * 
+	 * @return List<{@link BaseWeaponEntity}>
+	 */
+	public List<BaseWeaponEntity> getBaseWeapons();
 }

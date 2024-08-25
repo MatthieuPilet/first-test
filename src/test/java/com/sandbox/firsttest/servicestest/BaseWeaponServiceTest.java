@@ -5,6 +5,9 @@ package com.sandbox.firsttest.servicestest;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.junit.jupiter.api.Test;
 import org.mockito.ArgumentMatchers;
 import org.mockito.InjectMocks;
@@ -42,6 +45,14 @@ class BaseWeaponServiceTest {
         Mockito.when(baseWeaponRepositoryImpl.getBaseWeapon(ArgumentMatchers.anyInt())).thenReturn(new BaseWeaponEntity());
         Mockito.when(mapBWEntityToBWResponseDto.map(ArgumentMatchers.any())).thenReturn(new BWResponseDto());
         BWResponseDto baseWeaponResponseDto = baseWeaponService.getBaseWeapon(99999999);
+        assertNotNull(baseWeaponResponseDto);
+    }
+	
+	@Test
+    void getBaseWeaponsOKTest() {
+        Mockito.when(baseWeaponRepositoryImpl.getBaseWeapons()).thenReturn(new ArrayList<>());
+        Mockito.when(mapBWEntityToBWResponseDto.map(ArgumentMatchers.any())).thenReturn(new BWResponseDto());
+        List<BWResponseDto> baseWeaponResponseDto = baseWeaponService.getBaseWeapons();
         assertNotNull(baseWeaponResponseDto);
     }
 }

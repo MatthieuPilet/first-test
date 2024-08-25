@@ -40,8 +40,6 @@ class MapCreateCharacterRequestDtoToCharactersEntityTest {
 		
 		assertNotNull(characterEntity);
 		assertEquals(BigInteger.valueOf(1), characterEntity.getAccountInformationEntity().getAccountId());
-		assertEquals("TestName", characterEntity.getCharacterName());
-		
+		assertEquals("TestName", characterEntity.getCharacterName());		
 	}
-
 }

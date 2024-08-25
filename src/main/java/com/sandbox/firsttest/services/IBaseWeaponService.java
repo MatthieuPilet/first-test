@@ -1,5 +1,7 @@
 package com.sandbox.firsttest.services;
 
+import java.util.List;
+
 import com.sandbox.firsttest.dto.BWResponseDto;
 
 /**
@@ -17,4 +19,11 @@ public interface IBaseWeaponService {
 	 * @return {@link BWResponseDto}
 	 */
 	public BWResponseDto getBaseWeapon(Integer baseWeaponId);
+	
+	/**
+	 * The purpose of this method is to get all base weapon
+	 * 
+	 * @return List<{@link BWResponseDto}>
+	 */
+	public List<BWResponseDto> getBaseWeapons();
 }

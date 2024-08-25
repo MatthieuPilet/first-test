@@ -45,6 +45,28 @@ public class BaseWeaponRepositoryImpl implements IBaseWeaponRepository {
 		return baseWeaponEntityResult;
 	}
 
+	@Override
+	public List<BaseWeaponEntity> getBaseWeapons() {
+		Session session = HibernateConf.getSessionFactory().openSession();
+		CriteriaBuilder cb = session.getCriteriaBuilder();
+		CriteriaQuery<BaseWeaponEntity> query = cb.createQuery(BaseWeaponEntity.class);
+		Root<BaseWeaponEntity> baseWeaponEntity = query.from(BaseWeaponEntity.class);
+		
+		
+		query.multiselect(baseWeaponEntity.get(BaseWeaponEntity_.BASE_WEAPOND_ID),
+				baseWeaponEntity.get(BaseWeaponEntity_.BASE_WEAPON_NAME),
+				baseWeaponEntity.get(BaseWeaponEntity_.BASE_STAT_STRENGTH),
+				baseWeaponEntity.get(BaseWeaponEntity_.BASE_STAT_AGILITY),
+				baseWeaponEntity.get(BaseWeaponEntity_.BASE_STAT_INTELLIGENCE),
+				baseWeaponEntity.get(BaseWeaponEntity_.BASE_STAT_WISDOM),
+				baseWeaponEntity.get(BaseWeaponEntity_.BASE_STAT_STEALTH),
+				baseWeaponEntity.get(BaseWeaponEntity_.BASE_STAT_VITALITY),
+				baseWeaponEntity.get(BaseWeaponEntity_.BASE_STAT_ENERGY));
+		
+		List<BaseWeaponEntity> baseWeaponEntityResult = session.createQuery(query).getResultList();
+		session.close();
+		return baseWeaponEntityResult;
+	}
 
 
 }

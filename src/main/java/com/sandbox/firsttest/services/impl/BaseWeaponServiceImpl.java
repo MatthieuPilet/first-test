@@ -1,5 +1,7 @@
 package com.sandbox.firsttest.services.impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -24,5 +26,10 @@ public class BaseWeaponServiceImpl implements IBaseWeaponService{
 		return mapBwEntityToBWDto.map(baseWeapondEntity);
 	}
 
+	@Override
+	public List<BWResponseDto> getBaseWeapons() {
+		List<BaseWeaponEntity> baseWeapondEntity = baseWeaponRepositoryImpl.getBaseWeapons();
+		return baseWeapondEntity.stream().map(e -> mapBwEntityToBWDto.map(e)).toList();
+	}
 
 }
